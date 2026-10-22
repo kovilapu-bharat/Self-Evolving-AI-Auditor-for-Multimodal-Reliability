@@ -1,0 +1,4 @@
+model,modality,micro_f1,macro_f1,micro_precision,micro_recall,mean_average_precision,hamming_loss,inference_time_sec,samples_per_sec
+Text-Only (TF-IDF + LR),Text,0.6056,0.4955,0.5594,0.6602,0.5183,0.0929,1.5415,5052.2
+Image-Only (ResNet50 + LR),Image (Cached Feats),0.4151,0.2847,0.3373,0.5396,0.2337,0.1642,1.9394,4015.7
+Multimodal (Validation-Tuned Weighted Late Fusion),Multimodal (Cached E2E),0.5161,0.4003,0.4301,0.6451,0.3985,0.1307,3.602,2162.2

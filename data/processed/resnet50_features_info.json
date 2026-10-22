@@ -1,0 +1,8 @@
+{
+  "status": "COMPLETE",
+  "total_samples": 25959,
+  "completed_samples": 25959,
+  "feature_dim": 2048,
+  "model": "resnet50_weights_default",
+  "completion_time": "2026-10-09 12:52:27"
+}

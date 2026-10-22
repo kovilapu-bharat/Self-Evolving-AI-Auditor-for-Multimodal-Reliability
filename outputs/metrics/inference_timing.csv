@@ -1,0 +1,6 @@
+component,median_sec,min_sec,max_sec,std_sec,throughput_samples_per_sec,samples_tested,repetitions
+text_classifier_inference,1.5415,1.5356,1.715,0.06828,5052.2,7788,5
+image_classifier_cached_inference,1.9394,1.322,2.0579,0.29821,4015.7,7788,5
+fusion_and_thresholding_only,0.000962,0.000942,0.002194,0.0004863,8091428.6,7788,5
+end_to_end_cached_multimodal_inference,3.602,3.1565,3.9054,0.28124,2162.2,7788,5
+raw_image_feature_extraction_reference,794.7,,,,9.8,7788,historical_estimate_not_remeasured

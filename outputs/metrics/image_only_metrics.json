@@ -1,0 +1,623 @@
+{
+  "model_name": "ImageOnly_ResNet50_LogisticRegression",
+  "split": "test",
+  "num_test_samples": 7788,
+  "validation_selection": {
+    "fit_time_sec": 56.9,
+    "val_metrics_default": {
+      "micro_f1": 0.3969,
+      "macro_f1": 0.2575,
+      "micro_precision": 0.4181,
+      "macro_precision": 0.2764,
+      "micro_recall": 0.3778,
+      "macro_recall": 0.2466,
+      "mean_average_precision": 0.2368,
+      "hamming_loss": 0.1236,
+      "per_genre": {
+        "Action": {
+          "precision": 0.4453,
+          "recall": 0.3437,
+          "f1": 0.3879,
+          "average_precision": 0.373,
+          "support": 355,
+          "threshold": 0.5
+        },
+        "Adventure": {
+          "precision": 0.2864,
+          "recall": 0.2103,
+          "f1": 0.2426,
+          "average_precision": 0.2221,
+          "support": 271,
+          "threshold": 0.5
+        },
+        "Animation": {
+          "precision": 0.4624,
+          "recall": 0.4257,
+          "f1": 0.4433,
+          "average_precision": 0.4622,
+          "support": 101,
+          "threshold": 0.5
+        },
+        "Biography": {
+          "precision": 0.0423,
+          "recall": 0.0448,
+          "f1": 0.0435,
+          "average_precision": 0.0667,
+          "support": 134,
+          "threshold": 0.5
+        },
+        "Comedy": {
+          "precision": 0.6089,
+          "recall": 0.5239,
+          "f1": 0.5632,
+          "average_precision": 0.5963,
+          "support": 859,
+          "threshold": 0.5
+        },
+        "Crime": {
+          "precision": 0.2816,
+          "recall": 0.1797,
+          "f1": 0.2194,
+          "average_precision": 0.2372,
+          "support": 384,
+          "threshold": 0.5
+        },
+        "Documentary": {
+          "precision": 0.2913,
+          "recall": 0.2885,
+          "f1": 0.2899,
+          "average_precision": 0.2275,
+          "support": 208,
+          "threshold": 0.5
+        },
+        "Drama": {
+          "precision": 0.6401,
+          "recall": 0.7025,
+          "f1": 0.6699,
+          "average_precision": 0.6818,
+          "support": 1395,
+          "threshold": 0.5
+        },
+        "Family": {
+          "precision": 0.3246,
+          "recall": 0.3735,
+          "f1": 0.3473,
+          "average_precision": 0.3243,
+          "support": 166,
+          "threshold": 0.5
+        },
+        "Fantasy": {
+          "precision": 0.2405,
+          "recall": 0.1959,
+          "f1": 0.2159,
+          "average_precision": 0.1854,
+          "support": 194,
+          "threshold": 0.5
+        },
+        "Film-Noir": {
+          "precision": 0.1905,
+          "recall": 0.1176,
+          "f1": 0.1455,
+          "average_precision": 0.0907,
+          "support": 34,
+          "threshold": 0.5
+        },
+        "History": {
+          "precision": 0.0795,
+          "recall": 0.1043,
+          "f1": 0.0902,
+          "average_precision": 0.0601,
+          "support": 115,
+          "threshold": 0.5
+        },
+        "Horror": {
+          "precision": 0.3756,
+          "recall": 0.2741,
+          "f1": 0.3169,
+          "average_precision": 0.2993,
+          "support": 270,
+          "threshold": 0.5
+        },
+        "Music": {
+          "precision": 0.0823,
+          "recall": 0.1226,
+          "f1": 0.0985,
+          "average_precision": 0.0638,
+          "support": 106,
+          "threshold": 0.5
+        },
+        "Musical": {
+          "precision": 0.1271,
+          "recall": 0.1765,
+          "f1": 0.1478,
+          "average_precision": 0.0862,
+          "support": 85,
+          "threshold": 0.5
+        },
+        "Mystery": {
+          "precision": 0.1338,
+          "recall": 0.0922,
+          "f1": 0.1092,
+          "average_precision": 0.1093,
+          "support": 206,
+          "threshold": 0.5
+        },
+        "Romance": {
+          "precision": 0.4472,
+          "recall": 0.3004,
+          "f1": 0.3594,
+          "average_precision": 0.3512,
+          "support": 536,
+          "threshold": 0.5
+        },
+        "Sci-Fi": {
+          "precision": 0.2965,
+          "recall": 0.2935,
+          "f1": 0.295,
+          "average_precision": 0.2045,
+          "support": 201,
+          "threshold": 0.5
+        },
+        "Short": {
+          "precision": 0.0909,
+          "recall": 0.0833,
+          "f1": 0.087,
+          "average_precision": 0.0529,
+          "support": 48,
+          "threshold": 0.5
+        },
+        "Sport": {
+          "precision": 0.137,
+          "recall": 0.1562,
+          "f1": 0.146,
+          "average_precision": 0.1092,
+          "support": 64,
+          "threshold": 0.5
+        },
+        "Thriller": {
+          "precision": 0.4067,
+          "recall": 0.2813,
+          "f1": 0.3326,
+          "average_precision": 0.3677,
+          "support": 519,
+          "threshold": 0.5
+        },
+        "War": {
+          "precision": 0.103,
+          "recall": 0.1269,
+          "f1": 0.1137,
+          "average_precision": 0.099,
+          "support": 134,
+          "threshold": 0.5
+        },
+        "Western": {
+          "precision": 0.2647,
+          "recall": 0.2535,
+          "f1": 0.259,
+          "average_precision": 0.1753,
+          "support": 71,
+          "threshold": 0.5
+        }
+      }
+    },
+    "val_metrics_tuned": {
+      "micro_f1": 0.4237,
+      "macro_f1": 0.2954,
+      "micro_precision": 0.3441,
+      "macro_precision": 0.2548,
+      "micro_recall": 0.5511,
+      "macro_recall": 0.3739,
+      "mean_average_precision": 0.2368,
+      "hamming_loss": 0.1614,
+      "per_genre": {
+        "Action": {
+          "precision": 0.3911,
+          "recall": 0.4704,
+          "f1": 0.4271,
+          "average_precision": 0.373,
+          "support": 355,
+          "threshold": 0.3
+        },
+        "Adventure": {
+          "precision": 0.222,
+          "recall": 0.3358,
+          "f1": 0.2673,
+          "average_precision": 0.2221,
+          "support": 271,
+          "threshold": 0.22
+        },
+        "Animation": {
+          "precision": 0.4286,
+          "recall": 0.505,
+          "f1": 0.4636,
+          "average_precision": 0.4622,
+          "support": 101,
+          "threshold": 0.14
+        },
+        "Biography": {
+          "precision": 0.0777,
+          "recall": 0.2164,
+          "f1": 0.1144,
+          "average_precision": 0.0667,
+          "support": 134,
+          "threshold": 0.1
+        },
+        "Comedy": {
+          "precision": 0.5094,
+          "recall": 0.6927,
+          "f1": 0.5871,
+          "average_precision": 0.5963,
+          "support": 859,
+          "threshold": 0.28
+        },
+        "Crime": {
+          "precision": 0.2386,
+          "recall": 0.5156,
+          "f1": 0.3262,
+          "average_precision": 0.2372,
+          "support": 384,
+          "threshold": 0.16
+        },
+        "Documentary": {
+          "precision": 0.2941,
+          "recall": 0.3125,
+          "f1": 0.303,
+          "average_precision": 0.2275,
+          "support": 208,
+          "threshold": 0.44
+        },
+        "Drama": {
+          "precision": 0.5956,
+          "recall": 0.8667,
+          "f1": 0.706,
+          "average_precision": 0.6818,
+          "support": 1395,
+          "threshold": 0.3
+        },
+        "Family": {
+          "precision": 0.3986,
+          "recall": 0.3313,
+          "f1": 0.3618,
+          "average_precision": 0.3243,
+          "support": 166,
+          "threshold": 0.86
+        },
+        "Fantasy": {
+          "precision": 0.1724,
+          "recall": 0.4124,
+          "f1": 0.2432,
+          "average_precision": 0.1854,
+          "support": 194,
+          "threshold": 0.1
+        },
+        "Film-Noir": {
+          "precision": 0.1296,
+          "recall": 0.2059,
+          "f1": 0.1591,
+          "average_precision": 0.0907,
+          "support": 34,
+          "threshold": 0.1
+        },
+        "History": {
+          "precision": 0.1028,
+          "recall": 0.0957,
+          "f1": 0.0991,
+          "average_precision": 0.0601,
+          "support": 115,
+          "threshold": 0.68
+        },
+        "Horror": {
+          "precision": 0.2957,
+          "recall": 0.5333,
+          "f1": 0.3804,
+          "average_precision": 0.2993,
+          "support": 270,
+          "threshold": 0.12
+        },
+        "Music": {
+          "precision": 0.081,
+          "recall": 0.1887,
+          "f1": 0.1133,
+          "average_precision": 0.0638,
+          "support": 106,
+          "threshold": 0.16
+        },
+        "Musical": {
+          "precision": 0.1266,
+          "recall": 0.2353,
+          "f1": 0.1646,
+          "average_precision": 0.0862,
+          "support": 85,
+          "threshold": 0.22
+        },
+        "Mystery": {
+          "precision": 0.1124,
+          "recall": 0.2864,
+          "f1": 0.1614,
+          "average_precision": 0.1093,
+          "support": 206,
+          "threshold": 0.12
+        },
+        "Romance": {
+          "precision": 0.3228,
+          "recall": 0.5709,
+          "f1": 0.4124,
+          "average_precision": 0.3512,
+          "support": 536,
+          "threshold": 0.22
+        },
+        "Sci-Fi": {
+          "precision": 0.278,
+          "recall": 0.3333,
+          "f1": 0.3032,
+          "average_precision": 0.2045,
+          "support": 201,
+          "threshold": 0.36
+        },
+        "Short": {
+          "precision": 0.1385,
+          "recall": 0.1875,
+          "f1": 0.1593,
+          "average_precision": 0.0529,
+          "support": 48,
+          "threshold": 0.3
+        },
+        "Sport": {
+          "precision": 0.1417,
+          "recall": 0.2656,
+          "f1": 0.1848,
+          "average_precision": 0.1092,
+          "support": 64,
+          "threshold": 0.12
+        },
+        "Thriller": {
+          "precision": 0.3536,
+          "recall": 0.605,
+          "f1": 0.4463,
+          "average_precision": 0.3677,
+          "support": 519,
+          "threshold": 0.2
+        },
+        "War": {
+          "precision": 0.1022,
+          "recall": 0.209,
+          "f1": 0.1373,
+          "average_precision": 0.099,
+          "support": 134,
+          "threshold": 0.18
+        },
+        "Western": {
+          "precision": 0.3478,
+          "recall": 0.2254,
+          "f1": 0.2735,
+          "average_precision": 0.1753,
+          "support": 71,
+          "threshold": 0.82
+        }
+      }
+    },
+    "thresholds": [
+      0.30000001192092896,
+      0.2199999988079071,
+      0.14000000059604645,
+      0.10000000149011612,
+      0.2800000011920929,
+      0.1599999964237213,
+      0.4399999976158142,
+      0.30000001192092896,
+      0.8600000143051147,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.6800000071525574,
+      0.11999999731779099,
+      0.1599999964237213,
+      0.2199999988079071,
+      0.11999999731779099,
+      0.2199999988079071,
+      0.36000001430511475,
+      0.30000001192092896,
+      0.11999999731779099,
+      0.20000000298023224,
+      0.18000000715255737,
+      0.8199999928474426
+    ]
+  },
+  "test_metrics": {
+    "micro_f1": 0.4151,
+    "macro_f1": 0.2847,
+    "micro_precision": 0.3373,
+    "macro_precision": 0.2444,
+    "micro_recall": 0.5396,
+    "macro_recall": 0.3632,
+    "mean_average_precision": 0.2337,
+    "hamming_loss": 0.1642,
+    "per_genre": {
+      "Action": {
+        "precision": 0.3489,
+        "recall": 0.4276,
+        "f1": 0.3843,
+        "average_precision": 0.3339,
+        "support": 1064,
+        "threshold": 0.3
+      },
+      "Adventure": {
+        "precision": 0.2608,
+        "recall": 0.3879,
+        "f1": 0.3119,
+        "average_precision": 0.255,
+        "support": 812,
+        "threshold": 0.22
+      },
+      "Animation": {
+        "precision": 0.4096,
+        "recall": 0.5151,
+        "f1": 0.4563,
+        "average_precision": 0.4359,
+        "support": 299,
+        "threshold": 0.14
+      },
+      "Biography": {
+        "precision": 0.0773,
+        "recall": 0.2214,
+        "f1": 0.1146,
+        "average_precision": 0.0659,
+        "support": 402,
+        "threshold": 0.1
+      },
+      "Comedy": {
+        "precision": 0.5066,
+        "recall": 0.702,
+        "f1": 0.5885,
+        "average_precision": 0.5928,
+        "support": 2577,
+        "threshold": 0.28
+      },
+      "Crime": {
+        "precision": 0.2325,
+        "recall": 0.4813,
+        "f1": 0.3135,
+        "average_precision": 0.2329,
+        "support": 1151,
+        "threshold": 0.16
+      },
+      "Documentary": {
+        "precision": 0.2124,
+        "recall": 0.236,
+        "f1": 0.2236,
+        "average_precision": 0.1761,
+        "support": 623,
+        "threshold": 0.44
+      },
+      "Drama": {
+        "precision": 0.5935,
+        "recall": 0.8492,
+        "f1": 0.6987,
+        "average_precision": 0.6763,
+        "support": 4191,
+        "threshold": 0.3
+      },
+      "Family": {
+        "precision": 0.3638,
+        "recall": 0.3253,
+        "f1": 0.3435,
+        "average_precision": 0.2854,
+        "support": 501,
+        "threshold": 0.86
+      },
+      "Fantasy": {
+        "precision": 0.1597,
+        "recall": 0.381,
+        "f1": 0.2251,
+        "average_precision": 0.1444,
+        "support": 580,
+        "threshold": 0.1
+      },
+      "Film-Noir": {
+        "precision": 0.1373,
+        "recall": 0.2059,
+        "f1": 0.1647,
+        "average_precision": 0.0886,
+        "support": 102,
+        "threshold": 0.1
+      },
+      "History": {
+        "precision": 0.0846,
+        "recall": 0.0991,
+        "f1": 0.0913,
+        "average_precision": 0.0696,
+        "support": 343,
+        "threshold": 0.68
+      },
+      "Horror": {
+        "precision": 0.2865,
+        "recall": 0.5456,
+        "f1": 0.3757,
+        "average_precision": 0.3231,
+        "support": 812,
+        "threshold": 0.12
+      },
+      "Music": {
+        "precision": 0.0675,
+        "recall": 0.1597,
+        "f1": 0.0949,
+        "average_precision": 0.0588,
+        "support": 313,
+        "threshold": 0.16
+      },
+      "Musical": {
+        "precision": 0.1217,
+        "recall": 0.2381,
+        "f1": 0.1611,
+        "average_precision": 0.0839,
+        "support": 252,
+        "threshold": 0.22
+      },
+      "Mystery": {
+        "precision": 0.1231,
+        "recall": 0.3026,
+        "f1": 0.175,
+        "average_precision": 0.1117,
+        "support": 618,
+        "threshold": 0.12
+      },
+      "Romance": {
+        "precision": 0.3238,
+        "recall": 0.5488,
+        "f1": 0.4073,
+        "average_precision": 0.3311,
+        "support": 1609,
+        "threshold": 0.22
+      },
+      "Sci-Fi": {
+        "precision": 0.2317,
+        "recall": 0.2814,
+        "f1": 0.2542,
+        "average_precision": 0.2043,
+        "support": 597,
+        "threshold": 0.36
+      },
+      "Short": {
+        "precision": 0.1446,
+        "recall": 0.1702,
+        "f1": 0.1564,
+        "average_precision": 0.0856,
+        "support": 141,
+        "threshold": 0.3
+      },
+      "Sport": {
+        "precision": 0.1209,
+        "recall": 0.2526,
+        "f1": 0.1635,
+        "average_precision": 0.1235,
+        "support": 190,
+        "threshold": 0.12
+      },
+      "Thriller": {
+        "precision": 0.3515,
+        "recall": 0.589,
+        "f1": 0.4402,
+        "average_precision": 0.3837,
+        "support": 1557,
+        "threshold": 0.2
+      },
+      "War": {
+        "precision": 0.1146,
+        "recall": 0.24,
+        "f1": 0.1551,
+        "average_precision": 0.1011,
+        "support": 400,
+        "threshold": 0.18
+      },
+      "Western": {
+        "precision": 0.3475,
+        "recall": 0.1943,
+        "f1": 0.2492,
+        "average_precision": 0.2115,
+        "support": 211,
+        "threshold": 0.82
+      }
+    },
+    "inference_time_sec": 1.5661,
+    "samples_per_second": 4972.93
+  }
+}

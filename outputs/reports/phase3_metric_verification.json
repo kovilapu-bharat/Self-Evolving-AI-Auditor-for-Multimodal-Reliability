@@ -1,0 +1,333 @@
+{
+  "timestamp": "2026-10-21 18:10:11",
+  "task_6_split_verification": {
+    "status": "PASS",
+    "train_samples": 15564,
+    "val_samples": 2607,
+    "test_samples": 7788,
+    "total_samples": 25959,
+    "overlaps": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "is_disjoint": true,
+    "lengths_exact": true,
+    "duplicate_reconciliation": {
+      "distinct_duplicate_groups": 11,
+      "affected_records": 25,
+      "redundant_records": 14,
+      "cross_split_duplicates": 0,
+      "split_duplicate_groups": {
+        "train": 5,
+        "val": 3,
+        "test": 3
+      },
+      "split_affected_records": {
+        "train": 13,
+        "val": 6,
+        "test": 6
+      },
+      "split_redundant_records": {
+        "train": 8,
+        "val": 3,
+        "test": 3
+      },
+      "verified": true
+    }
+  },
+  "task_7_checkpoint_and_cache": {
+    "feature_cache": {
+      "shape": [
+        25959,
+        2048
+      ],
+      "dtype": "float32",
+      "shape_expected": [
+        25959,
+        2048
+      ],
+      "shape_match": true,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "checkpoints": {
+      "text_baseline": {
+        "path": "C:\\Users\\bharat kumar\\OneDrive\\Desktop\\SEAA\\outputs\\checkpoints\\text_baseline.joblib",
+        "valid": true
+      },
+      "image_baseline": {
+        "path": "C:\\Users\\bharat kumar\\OneDrive\\Desktop\\SEAA\\outputs\\checkpoints\\image_baseline.joblib",
+        "valid": true
+      },
+      "multimodal_baseline": {
+        "path": "C:\\Users\\bharat kumar\\OneDrive\\Desktop\\SEAA\\outputs\\checkpoints\\multimodal_baseline.json",
+        "valid": true,
+        "alpha": 0.55
+      }
+    }
+  },
+  "task_2_metrics_recomputation": {
+    "text_only": {
+      "model_name": "Text-Only (TF-IDF + LR)",
+      "records_verified": 7788,
+      "unique_ids_verified": 7788,
+      "probabilities_in_0_1": true,
+      "prob_range": [
+        0.0009900938157932323,
+        0.9902607458441651
+      ],
+      "metrics": {
+        "micro_f1": {
+          "stored_value": 0.6056,
+          "recomputed_value": 0.6056,
+          "absolute_diff": 2.4e-05,
+          "matches": true
+        },
+        "macro_f1": {
+          "stored_value": 0.4955,
+          "recomputed_value": 0.4955,
+          "absolute_diff": 2.9e-05,
+          "matches": true
+        },
+        "micro_precision": {
+          "stored_value": 0.5594,
+          "recomputed_value": 0.5594,
+          "absolute_diff": 3.4e-05,
+          "matches": true
+        },
+        "macro_precision": {
+          "stored_value": 0.5126,
+          "recomputed_value": 0.5126,
+          "absolute_diff": 1.9e-05,
+          "matches": true
+        },
+        "micro_recall": {
+          "stored_value": 0.6602,
+          "recomputed_value": 0.6602,
+          "absolute_diff": 2.2e-05,
+          "matches": true
+        },
+        "macro_recall": {
+          "stored_value": 0.5179,
+          "recomputed_value": 0.5179,
+          "absolute_diff": 8e-06,
+          "matches": true
+        },
+        "mean_average_precision": {
+          "stored_value": 0.5183,
+          "recomputed_value": 0.5183,
+          "absolute_diff": 3.3e-05,
+          "matches": true
+        },
+        "hamming_loss": {
+          "stored_value": 0.0929,
+          "recomputed_value": 0.0929,
+          "absolute_diff": 3.7e-05,
+          "matches": true
+        }
+      },
+      "all_metrics_match": true
+    },
+    "image_only": {
+      "model_name": "Image-Only (ResNet50 + LR)",
+      "records_verified": 7788,
+      "unique_ids_verified": 7788,
+      "probabilities_in_0_1": true,
+      "prob_range": [
+        5.9478857846361755e-56,
+        1.0
+      ],
+      "metrics": {
+        "micro_f1": {
+          "stored_value": 0.4151,
+          "recomputed_value": 0.4151,
+          "absolute_diff": 1.2e-05,
+          "matches": true
+        },
+        "macro_f1": {
+          "stored_value": 0.2847,
+          "recomputed_value": 0.2847,
+          "absolute_diff": 1.7e-05,
+          "matches": true
+        },
+        "micro_precision": {
+          "stored_value": 0.3373,
+          "recomputed_value": 0.3373,
+          "absolute_diff": 2.5e-05,
+          "matches": true
+        },
+        "macro_precision": {
+          "stored_value": 0.2444,
+          "recomputed_value": 0.2444,
+          "absolute_diff": 4.2e-05,
+          "matches": true
+        },
+        "micro_recall": {
+          "stored_value": 0.5396,
+          "recomputed_value": 0.5396,
+          "absolute_diff": 2.9e-05,
+          "matches": true
+        },
+        "macro_recall": {
+          "stored_value": 0.3632,
+          "recomputed_value": 0.3632,
+          "absolute_diff": 2.4e-05,
+          "matches": true
+        },
+        "mean_average_precision": {
+          "stored_value": 0.2337,
+          "recomputed_value": 0.2337,
+          "absolute_diff": 2e-06,
+          "matches": true
+        },
+        "hamming_loss": {
+          "stored_value": 0.1642,
+          "recomputed_value": 0.1642,
+          "absolute_diff": 2.7e-05,
+          "matches": true
+        }
+      },
+      "all_metrics_match": true
+    },
+    "multimodal": {
+      "model_name": "Multimodal (Validation-Tuned Weighted Late Fusion)",
+      "records_verified": 7788,
+      "unique_ids_verified": 7788,
+      "probabilities_in_0_1": true,
+      "prob_range": [
+        0.0007015014340834623,
+        0.9725733633502971
+      ],
+      "metrics": {
+        "micro_f1": {
+          "stored_value": 0.5161,
+          "recomputed_value": 0.5161,
+          "absolute_diff": 2.3e-05,
+          "matches": true
+        },
+        "macro_f1": {
+          "stored_value": 0.4003,
+          "recomputed_value": 0.4003,
+          "absolute_diff": 4.5e-05,
+          "matches": true
+        },
+        "micro_precision": {
+          "stored_value": 0.4301,
+          "recomputed_value": 0.4301,
+          "absolute_diff": 2.7e-05,
+          "matches": true
+        },
+        "macro_precision": {
+          "stored_value": 0.3523,
+          "recomputed_value": 0.3523,
+          "absolute_diff": 3.6e-05,
+          "matches": true
+        },
+        "micro_recall": {
+          "stored_value": 0.6451,
+          "recomputed_value": 0.6451,
+          "absolute_diff": 2.4e-05,
+          "matches": true
+        },
+        "macro_recall": {
+          "stored_value": 0.515,
+          "recomputed_value": 0.515,
+          "absolute_diff": 2.2e-05,
+          "matches": true
+        },
+        "mean_average_precision": {
+          "stored_value": 0.3985,
+          "recomputed_value": 0.3985,
+          "absolute_diff": 3.2e-05,
+          "matches": true
+        },
+        "hamming_loss": {
+          "stored_value": 0.1307,
+          "recomputed_value": 0.1307,
+          "absolute_diff": 4.7e-05,
+          "matches": true
+        }
+      },
+      "all_metrics_match": true
+    }
+  },
+  "task_4_timing_benchmark": {
+    "num_test_samples": 7788,
+    "num_repetitions": 5,
+    "timing_protocol": "1 warm-up repetition followed by 5 timed repetitions",
+    "timer_used": "time.perf_counter()",
+    "components": {
+      "text_classifier_inference": {
+        "median_sec": 1.5415,
+        "min_sec": 1.5356,
+        "max_sec": 1.715,
+        "std_sec": 0.06828,
+        "samples_per_sec": 5052.2,
+        "all_runs_sec": [
+          1.5356,
+          1.5415,
+          1.715,
+          1.5892,
+          1.5396
+        ]
+      },
+      "image_classifier_cached_inference": {
+        "median_sec": 1.9394,
+        "min_sec": 1.322,
+        "max_sec": 2.0579,
+        "std_sec": 0.29821,
+        "samples_per_sec": 4015.7,
+        "all_runs_sec": [
+          1.9642,
+          1.4586,
+          1.322,
+          1.9394,
+          2.0579
+        ]
+      },
+      "fusion_and_thresholding_only": {
+        "median_sec": 0.000962,
+        "min_sec": 0.000942,
+        "max_sec": 0.002194,
+        "std_sec": 0.0004863,
+        "samples_per_sec": 8091428.6,
+        "all_runs_sec": [
+          0.002194,
+          0.001424,
+          0.000962,
+          0.000945,
+          0.000942
+        ]
+      },
+      "end_to_end_cached_multimodal_inference": {
+        "median_sec": 3.602,
+        "min_sec": 3.1565,
+        "max_sec": 3.9054,
+        "std_sec": 0.28124,
+        "samples_per_sec": 2162.2,
+        "all_runs_sec": [
+          3.7128,
+          3.602,
+          3.9054,
+          3.2534,
+          3.1565
+        ]
+      },
+      "raw_image_feature_extraction_reference": {
+        "description": "Historical estimate from the Phase 2 log; not remeasured in this audit.",
+        "samples_per_sec": 9.8,
+        "estimated_time_for_7788_test_images_sec": 794.7,
+        "note": "Historical estimate from Phase 2 extraction log (outputs/logs/image_feature_extraction.log: 25,959 images at 9.8 imgs/s); not remeasured in this audit and not directly comparable to cached classifier latency."
+      }
+    }
+  },
+  "task_3_threshold_improvement_calculation": {
+    "default_val_micro_f1": 0.4744,
+    "tuned_val_micro_f1": 0.6042,
+    "absolute_change": 0.1298,
+    "percentage_points_change": "12.98 percentage points",
+    "relative_gain_percent": 27.36,
+    "statement": "Threshold optimization on the validation set yielded an absolute gain of 0.1298 (12.98 percentage points), representing a 27.36% relative improvement."
+  }
+}

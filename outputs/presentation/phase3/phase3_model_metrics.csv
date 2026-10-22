@@ -1,0 +1,4 @@
+model,modality,micro_f1,macro_f1,micro_precision,macro_precision,micro_recall,macro_recall,mean_average_precision,hamming_loss,test_samples,source_file
+Text-Only (TF-IDF + LR),Text,0.6056,0.4955,0.5594,0.5126,0.6602,0.5179,0.5183,0.0929,7788,outputs/reports/phase3_metric_verification.json
+Image-Only (ResNet50 + LR),Image (Cached Feats),0.4151,0.2847,0.3373,0.2444,0.5396,0.3632,0.2337,0.1642,7788,outputs/reports/phase3_metric_verification.json
+Multimodal (Validation-Tuned Weighted Late Fusion),Multimodal (Cached E2E),0.5161,0.4003,0.4301,0.3523,0.6451,0.515,0.3985,0.1307,7788,outputs/reports/phase3_metric_verification.json
