@@ -7,10 +7,19 @@ from src.models.image_feature_extractor import ResNet50FeatureExtractor
 from src.models.text_baseline import TextBaselineModel
 from src.models.image_baseline import ImageBaselineModel
 from src.models.multimodal_baseline import MultimodalBaselineModel
+from src.models.enhanced_baselines import (
+    EnhancedTextBaseline,
+    EnhancedImageBaseline,
+    EnhancedGatedMultimodalFusion
+)
 
 __all__ = [
     "ResNet50FeatureExtractor",
     "TextBaselineModel",
     "ImageBaselineModel",
-    "MultimodalBaselineModel"
+    "MultimodalBaselineModel",
+    "EnhancedTextBaseline",
+    "EnhancedImageBaseline",
+    "EnhancedGatedMultimodalFusion"
 ]
+

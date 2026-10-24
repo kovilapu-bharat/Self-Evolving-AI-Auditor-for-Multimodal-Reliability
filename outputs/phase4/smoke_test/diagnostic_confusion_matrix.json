@@ -1,0 +1,278 @@
+{
+  "rule_based_diagnosis": {
+    "binary_corruption_detection": {
+      "accuracy": 0.5846,
+      "precision": 0.9231,
+      "recall": 0.6,
+      "f1_score": 0.7273,
+      "specificity": 0.4,
+      "confusion_matrix": {
+        "true_negatives": 4,
+        "false_positives": 6,
+        "false_negatives": 48,
+        "true_positives": 72
+      }
+    },
+    "multiclass_failure_classification": {
+      "accuracy": 0.3308,
+      "macro_f1": 0.3904,
+      "micro_f1": 0.3308,
+      "labels": [
+        "CLEAN",
+        "CROSS_MODAL_CONFLICT",
+        "HIGH_UNCERTAINTY",
+        "IMAGE_FAILURE",
+        "MISSING_IMAGE",
+        "MISSING_TEXT",
+        "TEXT_FAILURE"
+      ],
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0,
+          1,
+          0,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          1,
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          15,
+          3,
+          0,
+          2,
+          0,
+          0,
+          20
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0
+        ],
+        [
+          20,
+          0,
+          3,
+          1,
+          0,
+          0,
+          16
+        ]
+      ],
+      "per_class": {
+        "CLEAN": {
+          "precision": 0.0769,
+          "recall": 0.4,
+          "f1": 0.129,
+          "support": 10
+        },
+        "CROSS_MODAL_CONFLICT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 10
+        },
+        "HIGH_UNCERTAINTY": {
+          "precision": 0.25,
+          "recall": 0.1,
+          "f1": 0.1429,
+          "support": 10
+        },
+        "IMAGE_FAILURE": {
+          "precision": 0.4,
+          "recall": 0.05,
+          "f1": 0.0889,
+          "support": 40
+        },
+        "MISSING_IMAGE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 10
+        },
+        "MISSING_TEXT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 10
+        },
+        "TEXT_FAILURE": {
+          "precision": 0.3478,
+          "recall": 0.4,
+          "f1": 0.3721,
+          "support": 40
+        }
+      }
+    }
+  },
+  "learned_diagnosis": {
+    "binary_corruption_detection": {
+      "accuracy": 0.1692,
+      "precision": 1.0,
+      "recall": 0.1,
+      "f1_score": 0.1818,
+      "specificity": 1.0,
+      "confusion_matrix": {
+        "true_negatives": 10,
+        "false_positives": 0,
+        "false_negatives": 108,
+        "true_positives": 12
+      }
+    },
+    "multiclass_failure_classification": {
+      "accuracy": 0.1538,
+      "macro_f1": 0.1522,
+      "micro_f1": 0.1538,
+      "labels": [
+        "CLEAN",
+        "CROSS_MODAL_CONFLICT",
+        "HIGH_UNCERTAINTY",
+        "IMAGE_FAILURE",
+        "MISSING_IMAGE",
+        "MISSING_TEXT",
+        "TEXT_FAILURE"
+      ],
+      "confusion_matrix": [
+        [
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          9,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          40,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0
+        ],
+        [
+          39,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "per_class": {
+        "CLEAN": {
+          "precision": 0.0847,
+          "recall": 1.0,
+          "f1": 0.1562,
+          "support": 10
+        },
+        "CROSS_MODAL_CONFLICT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 10
+        },
+        "HIGH_UNCERTAINTY": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 10
+        },
+        "IMAGE_FAILURE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        },
+        "MISSING_IMAGE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 10
+        },
+        "MISSING_TEXT": {
+          "precision": 0.8333,
+          "recall": 1.0,
+          "f1": 0.9091,
+          "support": 10
+        },
+        "TEXT_FAILURE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        }
+      }
+    }
+  }
+}

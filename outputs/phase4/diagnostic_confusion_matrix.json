@@ -1,0 +1,138 @@
+{
+  "binary_corruption_detection": {
+    "accuracy": 0.6673,
+    "precision": 0.9446,
+    "recall": 0.6583,
+    "f1_score": 0.7759,
+    "specificity": 0.73,
+    "confusion_matrix": {
+      "true_negatives": 365,
+      "false_positives": 135,
+      "false_negatives": 1196,
+      "true_positives": 2304
+    }
+  },
+  "multiclass_failure_classification": {
+    "accuracy": 0.365,
+    "macro_f1": 0.3593,
+    "micro_f1": 0.365,
+    "labels": [
+      "CLEAN",
+      "CROSS_MODAL_CONFLICT",
+      "HIGH_UNCERTAINTY",
+      "IMAGE_FAILURE",
+      "MISSING_IMAGE",
+      "MISSING_TEXT",
+      "TEXT_FAILURE"
+    ],
+    "confusion_matrix": [
+      [
+        365,
+        83,
+        1,
+        27,
+        0,
+        0,
+        24
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        209,
+        258,
+        0,
+        7,
+        0,
+        0,
+        26
+      ],
+      [
+        376,
+        568,
+        0,
+        6,
+        0,
+        0,
+        50
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        500,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        500,
+        0
+      ],
+      [
+        611,
+        244,
+        6,
+        50,
+        0,
+        0,
+        89
+      ]
+    ],
+    "per_class": {
+      "CLEAN": {
+        "precision": 0.2338,
+        "recall": 0.73,
+        "f1": 0.3542,
+        "support": 500
+      },
+      "CROSS_MODAL_CONFLICT": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "HIGH_UNCERTAINTY": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 500
+      },
+      "IMAGE_FAILURE": {
+        "precision": 0.0667,
+        "recall": 0.006,
+        "f1": 0.011,
+        "support": 1000
+      },
+      "MISSING_IMAGE": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 500
+      },
+      "MISSING_TEXT": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 500
+      },
+      "TEXT_FAILURE": {
+        "precision": 0.4709,
+        "recall": 0.089,
+        "f1": 0.1497,
+        "support": 1000
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+condition_id,condition_name,modality_corrupted,expected_failure_type,is_corrupted,sample_count,multimodal_micro_f1,multimodal_macro_f1,multimodal_hamming_loss,multimodal_map,text_micro_f1,image_micro_f1,mean_bernoulli_jsd,mean_jaccard_distance,mean_text_entropy,mean_image_entropy,anomaly_flag_rate,mean_anomaly_score,inference_latency_sec,cached_classifier_throughput,raw_feature_extraction_sec,audit_processing_sec
+0,Clean_Baseline,None,CLEAN,False,500,0.5187,0.3943,0.1299,0.4336,0.6018,0.4255,0.0541,0.695,0.3492,0.2172,0.27,0.4077,0.2943,1699.1,0.0,0.0218
+1,Text_Truncation_25%,Text,TEXT_FAILURE,True,500,0.4635,0.3445,0.1347,0.3736,0.4895,0.4255,0.056,0.7555,0.3397,0.2172,0.334,0.438,0.1145,4366.2,0.0,0.0192
+2,Text_Token_Masking_35%,Text,TEXT_FAILURE,True,500,0.4619,0.3366,0.1333,0.385,0.5196,0.4255,0.0536,0.7692,0.3575,0.2172,0.444,0.4752,0.1763,2836.7,0.0,0.0205
+3,Text_Empty,Text,MISSING_TEXT,True,500,0.3836,0.2441,0.14,0.2691,0.0,0.4255,0.0555,1.0,0.3395,0.2172,1.0,0.95,0.0989,5055.1,0.0,0.0091
+4,Image_Gaussian_Blur_r5,Vision,IMAGE_FAILURE,True,500,0.3466,0.3023,0.201,0.3613,0.6018,0.2127,0.1307,0.862,0.3492,0.1302,0.738,0.573,0.2742,1823.8,55.92,0.0164
+5,Image_Gaussian_Noise_s25,Vision,IMAGE_FAILURE,True,500,0.4121,0.3289,0.1556,0.3637,0.6018,0.2534,0.0834,0.8324,0.3492,0.1707,0.51,0.5002,0.2991,1671.9,55.68,0.0224
+6,Image_Missing_Blackout,Vision,MISSING_IMAGE,True,500,0.306,0.334,0.2363,0.5275,0.6018,0.2124,0.1357,0.8558,0.3492,0.1939,1.0,0.9,0.199,2512.4,0.0,0.0096
+7,Dual_Corruption_Trunc_Noise,Both,HIGH_UNCERTAINTY,True,500,0.3173,0.2475,0.1657,0.2915,0.4895,0.2534,0.0789,0.8579,0.3397,0.1707,0.582,0.5233,0.1232,4057.1,0.0,0.0204
