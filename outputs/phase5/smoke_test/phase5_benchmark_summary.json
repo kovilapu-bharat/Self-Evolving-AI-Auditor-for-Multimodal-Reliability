@@ -1,0 +1,60 @@
+{
+  "benchmark_name": "SEAA_Phase5_Adaptive_Recovery_Evaluation",
+  "timestamp": "20261025_155913",
+  "seed": 42,
+  "sample_size_per_condition": 10,
+  "total_conditions": 8,
+  "total_evaluations_per_policy": 80,
+  "overall_mean_micro_f1": {
+    "no_recovery": 0.5101,
+    "fixed_policy": 0.4915,
+    "adaptive_policy": 0.5252,
+    "oracle_upper_bound": 0.6311,
+    "adaptive_gain_over_unrecovered": 0.0151,
+    "adaptive_gain_over_fixed": 0.0338
+  },
+  "clean_retention": {
+    "clean_no_recovery_micro_f1": 0.6154,
+    "clean_adaptive_micro_f1": 0.5938,
+    "clean_delta": -0.0216,
+    "clean_action_selection": {
+      "static_fusion_pct": 20.0,
+      "text_only_pct": 0.0,
+      "image_only_pct": 0.0,
+      "rel_weighted_pct": 80.0,
+      "conservative_pct": 0.0
+    }
+  },
+  "runtime_performance": {
+    "timing_method": "time.perf_counter()",
+    "mean_adaptive_policy_latency_ms": 0.0307,
+    "throughput_samples_per_sec": 32560.0
+  },
+  "negative_deltas_visible": [
+    {
+      "condition": "Clean_Baseline",
+      "policy": "Adaptive_Policy",
+      "delta": -0.0216
+    },
+    {
+      "condition": "Text_Truncation_25%",
+      "policy": "Adaptive_Policy",
+      "delta": -0.01
+    },
+    {
+      "condition": "Image_Gaussian_Blur_r5",
+      "policy": "Adaptive_Policy",
+      "delta": -0.0939
+    },
+    {
+      "condition": "Image_Gaussian_Noise_s25",
+      "policy": "Adaptive_Policy",
+      "delta": -0.0616
+    },
+    {
+      "condition": "Dual_Corruption_Trunc_Noise",
+      "policy": "Adaptive_Policy",
+      "delta": -0.0435
+    }
+  ]
+}

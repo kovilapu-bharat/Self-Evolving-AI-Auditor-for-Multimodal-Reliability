@@ -1,0 +1,58 @@
+{
+  "Clean_Baseline": {
+    "STATIC_FUSION": 2,
+    "TEXT_ONLY": 0,
+    "IMAGE_ONLY": 0,
+    "RELIABILITY_WEIGHTED": 8,
+    "CONSERVATIVE_FUSION": 0
+  },
+  "Text_Truncation_25%": {
+    "STATIC_FUSION": 3,
+    "TEXT_ONLY": 0,
+    "IMAGE_ONLY": 0,
+    "RELIABILITY_WEIGHTED": 6,
+    "CONSERVATIVE_FUSION": 1
+  },
+  "Text_Token_Masking_35%": {
+    "STATIC_FUSION": 1,
+    "TEXT_ONLY": 0,
+    "IMAGE_ONLY": 0,
+    "RELIABILITY_WEIGHTED": 9,
+    "CONSERVATIVE_FUSION": 0
+  },
+  "Text_Empty": {
+    "STATIC_FUSION": 0,
+    "TEXT_ONLY": 0,
+    "IMAGE_ONLY": 10,
+    "RELIABILITY_WEIGHTED": 0,
+    "CONSERVATIVE_FUSION": 0
+  },
+  "Image_Gaussian_Blur_r5": {
+    "STATIC_FUSION": 6,
+    "TEXT_ONLY": 0,
+    "IMAGE_ONLY": 0,
+    "RELIABILITY_WEIGHTED": 4,
+    "CONSERVATIVE_FUSION": 0
+  },
+  "Image_Gaussian_Noise_s25": {
+    "STATIC_FUSION": 3,
+    "TEXT_ONLY": 0,
+    "IMAGE_ONLY": 0,
+    "RELIABILITY_WEIGHTED": 6,
+    "CONSERVATIVE_FUSION": 1
+  },
+  "Image_Missing_Blackout": {
+    "STATIC_FUSION": 0,
+    "TEXT_ONLY": 10,
+    "IMAGE_ONLY": 0,
+    "RELIABILITY_WEIGHTED": 0,
+    "CONSERVATIVE_FUSION": 0
+  },
+  "Dual_Corruption_Trunc_Noise": {
+    "STATIC_FUSION": 3,
+    "TEXT_ONLY": 0,
+    "IMAGE_ONLY": 0,
+    "RELIABILITY_WEIGHTED": 6,
+    "CONSERVATIVE_FUSION": 1
+  }
+}

@@ -1,0 +1,9 @@
+condition_id,condition_name,modality_corrupted,sample_count,no_recovery_micro_f1,no_recovery_macro_f1,no_recovery_map,no_recovery_hamming,fixed_policy_micro_f1,fixed_policy_macro_f1,fixed_delta_micro_f1,adaptive_policy_micro_f1,adaptive_policy_macro_f1,adaptive_delta_micro_f1,adaptive_delta_macro_f1,oracle_micro_f1,oracle_delta_micro_f1,adaptive_latency_ms_per_sample,actions_static_fusion_pct,actions_text_only_pct,actions_image_only_pct,actions_rel_weighted_pct,actions_conservative_pct
+0,Clean_Baseline,None,500,0.5187,0.3943,0.4336,0.1299,0.4652,0.3347,-0.0535,0.5528,0.429,0.0341,0.0347,0.6586,0.1399,0.0096,12.2,72.8,0.0,15.0,0.0
+1,Text_Truncation_25%,Text,500,0.4635,0.3445,0.3736,0.1347,0.4432,0.3217,-0.0203,0.47,0.3468,0.0065,0.0023,0.6026,0.1391,0.0097,10.8,73.6,0.0,15.6,0.0
+2,Text_Token_Masking_35%,Text,500,0.4619,0.3366,0.385,0.1333,0.4364,0.3109,-0.0255,0.469,0.3457,0.0071,0.0091,0.6047,0.1428,0.0109,12.2,77.0,0.0,10.8,0.0
+3,Text_Empty,Text,500,0.3836,0.2441,0.2691,0.14,0.3996,0.293,0.016,0.3996,0.293,0.016,0.0489,0.3996,0.016,0.0051,0.0,0.0,100.0,0.0,0.0
+4,Image_Gaussian_Blur_r5,Vision,500,0.3466,0.3023,0.3613,0.201,0.2272,0.1748,-0.1194,0.4016,0.3314,0.055,0.0291,0.5882,0.2416,0.0096,59.2,39.0,0.0,1.8,0.0
+5,Image_Gaussian_Noise_s25,Vision,500,0.4121,0.3289,0.3637,0.1556,0.3183,0.2582,-0.0938,0.4988,0.389,0.0867,0.0601,0.6147,0.2026,0.0337,25.6,67.0,0.0,7.4,0.0
+6,Image_Missing_Blackout,Vision,500,0.306,0.334,0.5275,0.2363,0.582,0.4421,0.276,0.582,0.4421,0.276,0.1081,0.582,0.276,0.004,0.0,100.0,0.0,0.0,0.0
+7,Dual_Corruption_Trunc_Noise,Both,500,0.3173,0.2475,0.2915,0.1657,0.2813,0.2203,-0.036,0.3937,0.2972,0.0764,0.0497,0.5126,0.1953,0.0069,22.6,69.0,0.0,8.4,0.0
