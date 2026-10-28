@@ -376,7 +376,7 @@ class MMIMDbDataPipeline:
             f.write(f"- **Multi-hot Target Dimension:** {summary['num_genres']} binary elements\n\n")
 
             f.write("## 5. Artifact Verification\n")
-            f.write("All required Phase 2 pipeline artifacts have been generated and validated:\n")
+            f.write("All required dataset pipeline artifacts have been generated and validated:\n")
             f.write("- `data/metadata.csv`: Full tabular record index with movie IDs and targets\n")
             f.write("- `data/label_mapping.json`: Bidirectional mapping for 23 genres\n")
             f.write("- `data/split_indices.json`: Reproducible split index arrays\n")

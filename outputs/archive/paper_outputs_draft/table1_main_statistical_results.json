@@ -1,0 +1,80 @@
+[
+  {
+    "Policy / Model Configuration": "SEAA Adaptive Recovery Policy (Ours)",
+    "Condition-Mean Micro-F1": "0.4709",
+    "Condition-Mean Macro-F1": "0.3611",
+    "Globally Pooled Micro-F1": "0.4690",
+    "Instance-Level Mean F1": "0.4671",
+    "Delta vs Unrecovered": "+0.0697 (+17.4%)",
+    "Delta vs Fixed Policy": "+0.0767 (+19.5%)",
+    "Clustered 95% CI vs Unrec": "[+0.0619, +0.0843]",
+    "Clustered t-test (df=499)": "t = 12.79, p = 1.34e-32",
+    "Wilcoxon Signed-Rank": "W = 23,564.0, p = 1.15e-31",
+    "Bootstrap Empirical p": "p < 0.0002"
+  },
+  {
+    "Policy / Model Configuration": "No Recovery (Static Late Fusion)",
+    "Condition-Mean Micro-F1": "0.4012",
+    "Condition-Mean Macro-F1": "0.3165",
+    "Globally Pooled Micro-F1": "0.3973",
+    "Instance-Level Mean F1": "0.3940",
+    "Delta vs Unrecovered": "Reference (0.0000)",
+    "Delta vs Fixed Policy": "+0.0070 (+1.8%)",
+    "Clustered 95% CI vs Unrec": "---",
+    "Clustered t-test (df=499)": "---",
+    "Wilcoxon Signed-Rank": "---",
+    "Bootstrap Empirical p": "---"
+  },
+  {
+    "Policy / Model Configuration": "Fixed Heuristic Routing Policy",
+    "Condition-Mean Micro-F1": "0.3942",
+    "Condition-Mean Macro-F1": "0.2927",
+    "Globally Pooled Micro-F1": "0.3905",
+    "Instance-Level Mean F1": "0.3901",
+    "Delta vs Unrecovered": "-0.0070 (-1.7%)",
+    "Delta vs Fixed Policy": "Reference (0.0000)",
+    "Clustered 95% CI vs Unrec": "[-0.0185, +0.0045]",
+    "Clustered t-test (df=499)": "t = -1.20, p = 0.231",
+    "Wilcoxon Signed-Rank": "W = 39,210.0, p = 0.245",
+    "Bootstrap Empirical p": "---"
+  },
+  {
+    "Policy / Model Configuration": "Ablation: Learning Disabled (Untrained)",
+    "Condition-Mean Micro-F1": "0.4377",
+    "Condition-Mean Macro-F1": "0.3361",
+    "Globally Pooled Micro-F1": "0.4348",
+    "Instance-Level Mean F1": "0.4340",
+    "Delta vs Unrecovered": "+0.0365 (+9.1%)",
+    "Delta vs Fixed Policy": "+0.0435 (+11.0%)",
+    "Clustered 95% CI vs Unrec": "[+0.0270, +0.0460]",
+    "Clustered t-test (df=499)": "t = 7.55, p = 2.11e-13",
+    "Wilcoxon Signed-Rank": "W = 31,450.0, p = 4.88e-13",
+    "Bootstrap Empirical p": "p < 0.0002"
+  },
+  {
+    "Policy / Model Configuration": "Ablation: Diagnosis Features Removed",
+    "Condition-Mean Micro-F1": "0.5054",
+    "Condition-Mean Macro-F1": "0.3714",
+    "Globally Pooled Micro-F1": "0.5056",
+    "Instance-Level Mean F1": "0.5042",
+    "Delta vs Unrecovered": "+0.1042 (+26.0%)",
+    "Delta vs Fixed Policy": "+0.1112 (+28.2%)",
+    "Clustered 95% CI vs Unrec": "[+0.0934, +0.1150]",
+    "Clustered t-test (df=499)": "t = 18.91, p = 4.12e-60",
+    "Wilcoxon Signed-Rank": "W = 15,210.0, p = 3.20e-56",
+    "Bootstrap Empirical p": "p < 0.0002"
+  },
+  {
+    "Policy / Model Configuration": "Theoretical Ceiling: Oracle Upper Bound",
+    "Condition-Mean Micro-F1": "0.5695",
+    "Condition-Mean Macro-F1": "0.4421",
+    "Globally Pooled Micro-F1": "0.5673",
+    "Instance-Level Mean F1": "0.5658",
+    "Delta vs Unrecovered": "+0.1682 (+41.9%)",
+    "Delta vs Fixed Policy": "+0.1753 (+44.5%)",
+    "Clustered 95% CI vs Unrec": "[+0.1554, +0.1810]",
+    "Clustered t-test (df=499)": "t = 25.84, p = 1.10e-94",
+    "Wilcoxon Signed-Rank": "W = 4,120.0, p = 8.54e-90",
+    "Bootstrap Empirical p": "p < 0.0002"
+  }
+]

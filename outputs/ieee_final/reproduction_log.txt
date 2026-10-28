@@ -1,0 +1,111 @@
+================================================================================
+SEAA IEEE FINAL OUTPUT REPRODUCTION LOG
+================================================================================
+Timestamp: 2026-10-28 15:28:21
+Platform: Windows 10 (AMD64, GenuineIntel)
+Python Version: 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
+Execution Directory: C:\Users\bharat kumar\OneDrive\Desktop\SEAA
+Output Directory: C:\Users\bharat kumar\OneDrive\Desktop\SEAA\outputs\ieee_final
+
+INPUT ARTIFACT SOURCES & INTEGRITY (MD5 / SHA-256):
+--------------------------------------------------------------------------------
+File: outputs\metrics\baseline_comparison.csv
+  MD5:    a7de428f9f599629801feb9007dc4220
+  SHA256: 312631e89cbcc32c65b24b2c1ee49438f5f87c05d3faf5c530ec62a78d290759
+File: outputs\recovery\run_20261025_phase5_adaptive_recovery\policy_comparison_metrics.csv
+  MD5:    91f3436534f7ed053a63f871c1a783a5
+  SHA256: 5099ea06e050d8764275d57a9848bbf1e6ec9adcac6d4de5362c9002556e2376
+File: outputs\recovery\run_20261025_phase5_adaptive_recovery\sample_level_decisions.csv
+  MD5:    c5d5f22fabd4d2b808f8e4017877d5e2
+  SHA256: 8115b0c2f52a2a829b2150244d279fbf9b0075c409dc344a4a62c0cc13d70baa
+File: outputs\recovery\run_20261025_phase5_adaptive_recovery\policy_action_distributions.json
+  MD5:    8ce7e640d2d641fa6c7f39626e1d7eac
+  SHA256: 045c2300408b74d355292999b1d7e2d64f534fa568dda518073404afa1ae0c7a
+File: outputs\recovery\ablation_study_results.csv
+  MD5:    9568fc7e80c9dd443b4d9cd5bf974b71
+  SHA256: 2ec9f082be9444aa9584186526ec812cda2f047528b8ce6a06a2d069f38252ca
+File: outputs\recovery\ablation_study_results.json
+  MD5:    a156ea15c03b858fe0e4c39c073b152b
+  SHA256: d696b2b87e99a21cd8ad918e4599949d362675f1fae17eb1aaf79a9451673656
+File: outputs\checkpoints\multimodal_baseline.json
+  MD5:    6d32c8a5b8ffb1e6b0063d03a53f14c4
+  SHA256: a4d9a1bf834db0143969088629e16a23e8c68b2e9d549b1865958b04b6797c58
+File: data\processed\resnet50_features_info.json
+  MD5:    a184f911448ffbfaf76db3225693115c
+  SHA256: 3033b343fa9d810a7359f06bfcd41fb5829114d1dd7b9e0051f820755d974135
+
+GENERATED IEEE DELIVERABLES & INTEGRITY (MD5 / SHA-256):
+--------------------------------------------------------------------------------
+File: fig1_seaa_architecture.pdf
+  Size:   89,417 bytes
+  MD5:    e859b8020343238f7ec526f8d4d5e871
+  SHA256: e9a660cb0906fe28d38d55d8e94b7abe2e94114693a00c660227f3c62a83446e
+File: fig1_seaa_architecture.png
+  Size:   655,517 bytes
+  MD5:    95d033d49483e3a93c07ef4b050d2c66
+  SHA256: dbc1b022d4c150940dfbc82ffb4788f9d0fc376a215e2b0a957eefca8891acd3
+File: fig2_baseline_comparison.pdf
+  Size:   34,996 bytes
+  MD5:    bca65692527325f044c57c226261740b
+  SHA256: 9a59da708e3e4b2f612e9144ae20e44681c5c27c03bae374582b054f264c0185
+File: fig2_baseline_comparison.png
+  Size:   179,781 bytes
+  MD5:    fe1321cd56847ab8864a27389ee0af85
+  SHA256: 96927e7df03e1680dd537c05ff09afa68356018426c2d732f3792cc7a7f66d76
+File: fig2_baseline_source.csv
+  Size:   457 bytes
+  MD5:    a7de428f9f599629801feb9007dc4220
+  SHA256: 312631e89cbcc32c65b24b2c1ee49438f5f87c05d3faf5c530ec62a78d290759
+File: fig3_recovery_by_condition.pdf
+  Size:   32,663 bytes
+  MD5:    2357342131c860c1bf57153e793dc4e5
+  SHA256: d274d2ce6c8767c54fae63b9c04e128419b672e2d15d0ed3e7b0f904ada47cf9
+File: fig3_recovery_by_condition.png
+  Size:   236,096 bytes
+  MD5:    49f473b9e2300a9f6a364b24172c017b
+  SHA256: 757b6f6a7357e214589ea7d8a0dc8be31464d611b5a6fe1a41765c41b65a16ba
+File: fig3_recovery_source.csv
+  Size:   1,702 bytes
+  MD5:    6236d24eb3c69abecd0e9573c2386b96
+  SHA256: cbec50c26e3b926bc906f8ba29d28c2b0110aa736ca225151a1a75e2b60997d0
+File: fig4_action_heatmap.pdf
+  Size:   32,396 bytes
+  MD5:    4c508ef09a794bb5bf000fa65a17169c
+  SHA256: cf3f2c1917248f219b96bc10e3ff9e59c85b6f1a8c446075f37256a3c496aa17
+File: fig4_action_heatmap.png
+  Size:   242,602 bytes
+  MD5:    03f7ba34a2b09ee1136a073aaad96f8d
+  SHA256: 2050f7b09b47c1847a9731ac1d43610890fd864e7efe61233c73d1baf9583f62
+File: fig4_action_distribution_source.csv
+  Size:   458 bytes
+  MD5:    4e18e9c6b9b617c678409b92a9cae441
+  SHA256: 88ae57f433060ac3019741830377b4e9015199b51a6c5a86ec48d7db834ab18c
+File: fig5_ablation_study.pdf
+  Size:   30,649 bytes
+  MD5:    392d27304b3ee688fd26bab5b884bcb5
+  SHA256: c76d2b382662d72d40cc221d61648a2c8d2a39be1939d784675aeadb71c9d390
+File: fig5_ablation_study.png
+  Size:   270,794 bytes
+  MD5:    48310cdb1f8083c587ea735111174faa
+  SHA256: bb9ae9e55baaebe25b6187d8278a8e97d9617414da3b4c2a5b5d13dff38cb182
+File: fig5_ablation_source.csv
+  Size:   820 bytes
+  MD5:    e24bd206b09e6ae45305464f8c7ed06e
+  SHA256: 40da988a219dadfc2367641cca86213d32992b86ee41cac7a9fa457036b0ea9b
+File: table1_main_results.csv
+  Size:   869 bytes
+  MD5:    474a385a97ddd94907bc864abe0a0042
+  SHA256: ece34f12d58213037aa95e124971c2f3e331fd704c5943169de48e23ba5dee58
+File: table1_main_results.md
+  Size:   2,649 bytes
+  MD5:    984fc0e3a42acdafc7ceff6059d6f77a
+  SHA256: 513b6889977027ac505c6ef4e651aa3d3779f16f2f6bf7fa199b60e69e2bb32a
+File: outputs_audit_report.md
+  Size:   25,104 bytes
+  MD5:    ae59be2c0af755c7c83a74eedd1b593a
+  SHA256: 14265c32690dbb73e5885831591204d7694fd5e9b9d1f2566535d80579741f5d
+
+================================================================================
+REPRODUCTION COMMAND:
+python scripts/generate_ieee_final_outputs.py
+================================================================================

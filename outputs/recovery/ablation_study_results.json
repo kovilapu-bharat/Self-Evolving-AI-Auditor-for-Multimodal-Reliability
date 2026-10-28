@@ -1,0 +1,307 @@
+{
+  "summary_table": [
+    {
+      "Policy": "Full_SEAA",
+      "Condition_Mean_Micro_F1": 0.47106249999999994,
+      "Condition_Mean_Macro_F1": 0.36106249999999995,
+      "Globally_Pooled_Micro_F1": 0.469,
+      "Globally_Pooled_Macro_F1": 0.3541,
+      "Instance_Mean_F1": 0.4675082473082473,
+      "Delta_vs_NoRecovery": 0.06984999999999991
+    },
+    {
+      "Policy": "Ablation_Learning_Disabled",
+      "Condition_Mean_Micro_F1": 0.4377125,
+      "Condition_Mean_Macro_F1": 0.33614999999999995,
+      "Globally_Pooled_Micro_F1": 0.4348,
+      "Globally_Pooled_Macro_F1": 0.3284,
+      "Instance_Mean_F1": 0.4304927836052836,
+      "Delta_vs_NoRecovery": 0.03649999999999998
+    },
+    {
+      "Policy": "Ablation_No_Diagnosis",
+      "Condition_Mean_Micro_F1": 0.505375,
+      "Condition_Mean_Macro_F1": 0.37139999999999995,
+      "Globally_Pooled_Micro_F1": 0.5056,
+      "Globally_Pooled_Macro_F1": 0.3743,
+      "Instance_Mean_F1": 0.49374761349761354,
+      "Delta_vs_NoRecovery": 0.10416249999999999
+    },
+    {
+      "Policy": "Ablation_Random_Action",
+      "Condition_Mean_Micro_F1": 0.434575,
+      "Condition_Mean_Macro_F1": 0.330625,
+      "Globally_Pooled_Micro_F1": 0.4327,
+      "Globally_Pooled_Macro_F1": 0.3239,
+      "Instance_Mean_F1": 0.4294685703185702,
+      "Delta_vs_NoRecovery": 0.03336249999999996
+    },
+    {
+      "Policy": "Baseline_No_Recovery",
+      "Condition_Mean_Micro_F1": 0.4012125,
+      "Condition_Mean_Macro_F1": 0.31652499999999995,
+      "Globally_Pooled_Micro_F1": 0.3973,
+      "Globally_Pooled_Macro_F1": 0.303,
+      "Instance_Mean_F1": 0.3939508311133311,
+      "Delta_vs_NoRecovery": 0.0
+    },
+    {
+      "Policy": "Baseline_Fixed_Policy",
+      "Condition_Mean_Micro_F1": 0.3930875,
+      "Condition_Mean_Macro_F1": 0.29267499999999996,
+      "Globally_Pooled_Micro_F1": 0.3894,
+      "Globally_Pooled_Macro_F1": 0.2888,
+      "Instance_Mean_F1": 0.38904597902097904,
+      "Delta_vs_NoRecovery": -0.008125000000000049
+    },
+    {
+      "Policy": "Oracle_Upper_Bound",
+      "Condition_Mean_Micro_F1": 0.56945,
+      "Condition_Mean_Macro_F1": 0.4421125,
+      "Globally_Pooled_Micro_F1": 0.5673,
+      "Globally_Pooled_Macro_F1": 0.4399,
+      "Instance_Mean_F1": 0.5757071636696637,
+      "Delta_vs_NoRecovery": 0.16823749999999998
+    }
+  ],
+  "per_condition_results": {
+    "Full_SEAA": {
+      "Clean_Baseline": {
+        "micro_f1": 0.5559,
+        "macro_f1": 0.4383
+      },
+      "Text_Truncation_25%": {
+        "micro_f1": 0.4697,
+        "macro_f1": 0.3463
+      },
+      "Text_Token_Masking_35%": {
+        "micro_f1": 0.4697,
+        "macro_f1": 0.3461
+      },
+      "Text_Empty": {
+        "micro_f1": 0.3996,
+        "macro_f1": 0.293
+      },
+      "Image_Gaussian_Blur_r5": {
+        "micro_f1": 0.3987,
+        "macro_f1": 0.3303
+      },
+      "Image_Gaussian_Noise_s25": {
+        "micro_f1": 0.4981,
+        "macro_f1": 0.3906
+      },
+      "Image_Missing_Blackout": {
+        "micro_f1": 0.582,
+        "macro_f1": 0.4421
+      },
+      "Dual_Corruption_Trunc_Noise": {
+        "micro_f1": 0.3948,
+        "macro_f1": 0.3018
+      }
+    },
+    "Ablation_Learning_Disabled": {
+      "Clean_Baseline": {
+        "micro_f1": 0.5187,
+        "macro_f1": 0.3943
+      },
+      "Text_Truncation_25%": {
+        "micro_f1": 0.4635,
+        "macro_f1": 0.3445
+      },
+      "Text_Token_Masking_35%": {
+        "micro_f1": 0.4619,
+        "macro_f1": 0.3366
+      },
+      "Text_Empty": {
+        "micro_f1": 0.3996,
+        "macro_f1": 0.293
+      },
+      "Image_Gaussian_Blur_r5": {
+        "micro_f1": 0.3466,
+        "macro_f1": 0.3023
+      },
+      "Image_Gaussian_Noise_s25": {
+        "micro_f1": 0.4121,
+        "macro_f1": 0.3289
+      },
+      "Image_Missing_Blackout": {
+        "micro_f1": 0.582,
+        "macro_f1": 0.4421
+      },
+      "Dual_Corruption_Trunc_Noise": {
+        "micro_f1": 0.3173,
+        "macro_f1": 0.2475
+      }
+    },
+    "Ablation_No_Diagnosis": {
+      "Clean_Baseline": {
+        "micro_f1": 0.5488,
+        "macro_f1": 0.4192
+      },
+      "Text_Truncation_25%": {
+        "micro_f1": 0.4642,
+        "macro_f1": 0.3168
+      },
+      "Text_Token_Masking_35%": {
+        "micro_f1": 0.469,
+        "macro_f1": 0.3357
+      },
+      "Text_Empty": {
+        "micro_f1": 0.3996,
+        "macro_f1": 0.293
+      },
+      "Image_Gaussian_Blur_r5": {
+        "micro_f1": 0.5757,
+        "macro_f1": 0.4322
+      },
+      "Image_Gaussian_Noise_s25": {
+        "micro_f1": 0.5529,
+        "macro_f1": 0.4114
+      },
+      "Image_Missing_Blackout": {
+        "micro_f1": 0.582,
+        "macro_f1": 0.4421
+      },
+      "Dual_Corruption_Trunc_Noise": {
+        "micro_f1": 0.4508,
+        "macro_f1": 0.3208
+      }
+    },
+    "Ablation_Random_Action": {
+      "Clean_Baseline": {
+        "micro_f1": 0.5103,
+        "macro_f1": 0.3919
+      },
+      "Text_Truncation_25%": {
+        "micro_f1": 0.4417,
+        "macro_f1": 0.3297
+      },
+      "Text_Token_Masking_35%": {
+        "micro_f1": 0.454,
+        "macro_f1": 0.3196
+      },
+      "Text_Empty": {
+        "micro_f1": 0.3996,
+        "macro_f1": 0.293
+      },
+      "Image_Gaussian_Blur_r5": {
+        "micro_f1": 0.3636,
+        "macro_f1": 0.3062
+      },
+      "Image_Gaussian_Noise_s25": {
+        "micro_f1": 0.4059,
+        "macro_f1": 0.317
+      },
+      "Image_Missing_Blackout": {
+        "micro_f1": 0.582,
+        "macro_f1": 0.4421
+      },
+      "Dual_Corruption_Trunc_Noise": {
+        "micro_f1": 0.3195,
+        "macro_f1": 0.2455
+      }
+    },
+    "Baseline_No_Recovery": {
+      "Clean_Baseline": {
+        "micro_f1": 0.5187,
+        "macro_f1": 0.3943
+      },
+      "Text_Truncation_25%": {
+        "micro_f1": 0.4635,
+        "macro_f1": 0.3445
+      },
+      "Text_Token_Masking_35%": {
+        "micro_f1": 0.4619,
+        "macro_f1": 0.3366
+      },
+      "Text_Empty": {
+        "micro_f1": 0.3836,
+        "macro_f1": 0.2441
+      },
+      "Image_Gaussian_Blur_r5": {
+        "micro_f1": 0.3466,
+        "macro_f1": 0.3023
+      },
+      "Image_Gaussian_Noise_s25": {
+        "micro_f1": 0.4121,
+        "macro_f1": 0.3289
+      },
+      "Image_Missing_Blackout": {
+        "micro_f1": 0.306,
+        "macro_f1": 0.334
+      },
+      "Dual_Corruption_Trunc_Noise": {
+        "micro_f1": 0.3173,
+        "macro_f1": 0.2475
+      }
+    },
+    "Baseline_Fixed_Policy": {
+      "Clean_Baseline": {
+        "micro_f1": 0.4642,
+        "macro_f1": 0.3334
+      },
+      "Text_Truncation_25%": {
+        "micro_f1": 0.4432,
+        "macro_f1": 0.3214
+      },
+      "Text_Token_Masking_35%": {
+        "micro_f1": 0.4356,
+        "macro_f1": 0.3112
+      },
+      "Text_Empty": {
+        "micro_f1": 0.3996,
+        "macro_f1": 0.293
+      },
+      "Image_Gaussian_Blur_r5": {
+        "micro_f1": 0.2257,
+        "macro_f1": 0.1709
+      },
+      "Image_Gaussian_Noise_s25": {
+        "micro_f1": 0.3135,
+        "macro_f1": 0.2497
+      },
+      "Image_Missing_Blackout": {
+        "micro_f1": 0.582,
+        "macro_f1": 0.4421
+      },
+      "Dual_Corruption_Trunc_Noise": {
+        "micro_f1": 0.2809,
+        "macro_f1": 0.2197
+      }
+    },
+    "Oracle_Upper_Bound": {
+      "Clean_Baseline": {
+        "micro_f1": 0.6567,
+        "macro_f1": 0.5478
+      },
+      "Text_Truncation_25%": {
+        "micro_f1": 0.6004,
+        "macro_f1": 0.4779
+      },
+      "Text_Token_Masking_35%": {
+        "micro_f1": 0.6037,
+        "macro_f1": 0.4608
+      },
+      "Text_Empty": {
+        "micro_f1": 0.3996,
+        "macro_f1": 0.293
+      },
+      "Image_Gaussian_Blur_r5": {
+        "micro_f1": 0.5873,
+        "macro_f1": 0.4466
+      },
+      "Image_Gaussian_Noise_s25": {
+        "micro_f1": 0.6142,
+        "macro_f1": 0.4826
+      },
+      "Image_Missing_Blackout": {
+        "micro_f1": 0.582,
+        "macro_f1": 0.4421
+      },
+      "Dual_Corruption_Trunc_Noise": {
+        "micro_f1": 0.5117,
+        "macro_f1": 0.3861
+      }
+    }
+  }
+}

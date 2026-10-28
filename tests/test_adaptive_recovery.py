@@ -1,5 +1,5 @@
 """
-Unit and Integration Tests for SEAA Phase 5 Adaptive Recovery Policy.
+Unit and Integration Tests for SEAA Adaptive Recovery Policy.
 
 Verifies:
 1. Valid action selection for text-only, image-only, and both-available cases.

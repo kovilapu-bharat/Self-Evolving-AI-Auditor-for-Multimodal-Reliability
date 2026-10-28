@@ -9,7 +9,7 @@ Validates:
 6. Configurable evaluation scale
 7. Enhanced baseline models & dynamic gating
 8. Component-level timing tracking
-9. Phase 5 Recovery (DynamicModalityGating & ConfidenceRecoveryRouter)
+9. Adaptive Recovery (DynamicModalityGating & ConfidenceRecoveryRouter)
 10. Additional corruptions (typo, OCR, JPEG compression, contrast washout)
 """
 
@@ -229,7 +229,7 @@ def test_enhanced_gated_multimodal_fusion():
 
 
 # ---------------------------------------------------------------------------
-# Test 9: Phase 5 Recovery Engine
+# Test 9: Adaptive Recovery Engine
 # ---------------------------------------------------------------------------
 def test_dynamic_modality_gating():
     gating = DynamicModalityGating(default_alpha=0.5)

@@ -1,5 +1,5 @@
 """
-Unit tests for SEAA Phase 3 Presentation-Ready Outputs.
+Unit tests for SEAA Baseline Presentation Outputs.
 Verifies that all presentation figures, tables, PDF, and README exist,
 have non-zero sizes, and adhere strictly to authoritative verified values.
 """

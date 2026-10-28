@@ -1,0 +1,120 @@
+[
+  {
+    "case_id": "CASE_1_MISSING_IMAGE",
+    "title": "Movie_27",
+    "regime": "Missing Vision Modality (Poster Blackout)",
+    "diagnosed_state": "MISSING_IMAGE",
+    "selected_action": "TEXT_ONLY",
+    "ground_truth_genres": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "unrecovered_predictions": [
+      "Comedy",
+      "Drama"
+    ],
+    "seaa_recovered_predictions": [
+      "Comedy"
+    ],
+    "text_snippet": "A Harvard graduate transports a load of marijuana from Boston to Berkeley, California.",
+    "audit_signals": {
+      "text_entropy": 0.32,
+      "image_entropy": 0.88,
+      "jsd": 0.31
+    },
+    "recovery_verdict": "SEAA identified missing poster, isolated text modality, eliminating image blackout distortion."
+  },
+  {
+    "case_id": "CASE_2_TEXT_TRUNCATION",
+    "title": "Movie_113",
+    "regime": "Text Truncation (Initial 25% Words Retained)",
+    "diagnosed_state": "TEXT_FAILURE",
+    "selected_action": "STATIC_FUSION",
+    "ground_truth_genres": [
+      "Comedy"
+    ],
+    "unrecovered_predictions": [
+      "Drama"
+    ],
+    "seaa_recovered_predictions": [
+      "Drama"
+    ],
+    "text_snippet": "A girl who had left her small Japanese village for the excitement",
+    "audit_signals": {
+      "text_entropy": 0.74,
+      "image_entropy": 0.38,
+      "jsd": 0.24
+    },
+    "recovery_verdict": "SEAA detected high text uncertainty and disagreement, reweighting towards informative poster features."
+  },
+  {
+    "case_id": "CASE_3_IMAGE_NOISE",
+    "title": "Movie_248",
+    "regime": "Vision Sensor Noise (Gaussian Noise sigma=0.25)",
+    "diagnosed_state": "IMAGE_FAILURE",
+    "selected_action": "STATIC_FUSION",
+    "ground_truth_genres": [
+      "Drama"
+    ],
+    "unrecovered_predictions": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Film-Noir",
+      "Musical",
+      "Romance",
+      "Sport"
+    ],
+    "seaa_recovered_predictions": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Film-Noir",
+      "Musical",
+      "Romance",
+      "Sport"
+    ],
+    "text_snippet": "A nearly wordless visual narrative intercuts two main stories and a couple of minor ones. A woman, perhaps the Madonna, brings forth her baby to a crowd of intrusive paparazzi; she...",
+    "audit_signals": {
+      "text_entropy": 0.31,
+      "image_entropy": 0.82,
+      "jsd": 0.26
+    },
+    "recovery_verdict": "SEAA audited high poster entropy and cross-modal discrepancy, prioritizing pristine synopsis text."
+  },
+  {
+    "case_id": "CASE_4_PRISTINE_CLEAN",
+    "title": "Movie_330",
+    "regime": "Clean Pristine Baseline (Zero Corruption)",
+    "diagnosed_state": "CLEAN",
+    "selected_action": "STATIC_FUSION",
+    "ground_truth_genres": [
+      "Adventure",
+      "War"
+    ],
+    "unrecovered_predictions": [
+      "Adventure",
+      "Drama",
+      "History",
+      "War"
+    ],
+    "seaa_recovered_predictions": [
+      "Adventure",
+      "Drama",
+      "History",
+      "War"
+    ],
+    "text_snippet": "Born in British India, Gunga Din always wanted to join the British army like many of his fellow Indians, but was not allowed to do so. So he starts observing them and learns accord...",
+    "audit_signals": {
+      "text_entropy": 0.34,
+      "image_entropy": 0.36,
+      "jsd": 0.06
+    },
+    "recovery_verdict": "SEAA verified low disagreement and high modal confidence, maintaining optimal multimodal late fusion."
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "condition_name":"OOD_1_Typo_Keyboard_Noise",
+    "description":"Text Modality: Keyboard Typo Perturbation (25% char swap)",
+    "model_name":"No Recovery (Static Late Fusion)",
+    "micro_f1":0.4489,
+    "macro_f1":0.317,
+    "micro_ece":0.0171624533,
+    "brier_score":0.0743424449
+  },
+  {
+    "condition_name":"OOD_1_Typo_Keyboard_Noise",
+    "description":"Text Modality: Keyboard Typo Perturbation (25% char swap)",
+    "model_name":"Fixed Heuristic Router",
+    "micro_f1":0.4248,
+    "macro_f1":0.2992,
+    "micro_ece":0.039996617,
+    "brier_score":0.08603567
+  },
+  {
+    "condition_name":"OOD_1_Typo_Keyboard_Noise",
+    "description":"Text Modality: Keyboard Typo Perturbation (25% char swap)",
+    "model_name":"SEAA Adaptive (Tabular Q)",
+    "micro_f1":0.4489,
+    "macro_f1":0.317,
+    "micro_ece":0.0171624533,
+    "brier_score":0.0743424449
+  },
+  {
+    "condition_name":"OOD_1_Typo_Keyboard_Noise",
+    "description":"Text Modality: Keyboard Typo Perturbation (25% char swap)",
+    "model_name":"SEAA Adaptive (LinUCB)",
+    "micro_f1":0.467,
+    "macro_f1":0.3,
+    "micro_ece":0.0127875035,
+    "brier_score":0.0755307072
+  },
+  {
+    "condition_name":"OOD_1_Typo_Keyboard_Noise",
+    "description":"Text Modality: Keyboard Typo Perturbation (25% char swap)",
+    "model_name":"Oracle Upper Bound",
+    "micro_f1":0.5885,
+    "macro_f1":0.4522,
+    "micro_ece":0.0115153417,
+    "brier_score":0.0713894833
+  },
+  {
+    "condition_name":"OOD_2_Salt_And_Pepper_Impulse",
+    "description":"Vision Modality: Salt & Pepper Feature Packet Drop (25% impulse mask)",
+    "model_name":"No Recovery (Static Late Fusion)",
+    "micro_f1":0.4848,
+    "macro_f1":0.3606,
+    "micro_ece":0.0148562502,
+    "brier_score":0.0703999764
+  },
+  {
+    "condition_name":"OOD_2_Salt_And_Pepper_Impulse",
+    "description":"Vision Modality: Salt & Pepper Feature Packet Drop (25% impulse mask)",
+    "model_name":"Fixed Heuristic Router",
+    "micro_f1":0.4511,
+    "macro_f1":0.3281,
+    "micro_ece":0.0300333325,
+    "brier_score":0.0833571408
+  },
+  {
+    "condition_name":"OOD_2_Salt_And_Pepper_Impulse",
+    "description":"Vision Modality: Salt & Pepper Feature Packet Drop (25% impulse mask)",
+    "model_name":"SEAA Adaptive (Tabular Q)",
+    "micro_f1":0.4848,
+    "macro_f1":0.3606,
+    "micro_ece":0.0148562502,
+    "brier_score":0.0703999764
+  },
+  {
+    "condition_name":"OOD_2_Salt_And_Pepper_Impulse",
+    "description":"Vision Modality: Salt & Pepper Feature Packet Drop (25% impulse mask)",
+    "model_name":"SEAA Adaptive (LinUCB)",
+    "micro_f1":0.582,
+    "macro_f1":0.4421,
+    "micro_ece":0.0226041936,
+    "brier_score":0.0629354043
+  },
+  {
+    "condition_name":"OOD_2_Salt_And_Pepper_Impulse",
+    "description":"Vision Modality: Salt & Pepper Feature Packet Drop (25% impulse mask)",
+    "model_name":"Oracle Upper Bound",
+    "micro_f1":0.6412,
+    "macro_f1":0.5104,
+    "micro_ece":0.0202259799,
+    "brier_score":0.0629852876
+  },
+  {
+    "condition_name":"OOD_3_Low_Contrast_Washout",
+    "description":"Vision Modality: Low-Contrast Illumination Washout (15% scale + shift)",
+    "model_name":"No Recovery (Static Late Fusion)",
+    "micro_f1":0.3984,
+    "macro_f1":0.3544,
+    "micro_ece":0.051694581,
+    "brier_score":0.0749553863
+  },
+  {
+    "condition_name":"OOD_3_Low_Contrast_Washout",
+    "description":"Vision Modality: Low-Contrast Illumination Washout (15% scale + shift)",
+    "model_name":"Fixed Heuristic Router",
+    "micro_f1":0.2663,
+    "macro_f1":0.2388,
+    "micro_ece":0.0757135342,
+    "brier_score":0.0891272589
+  },
+  {
+    "condition_name":"OOD_3_Low_Contrast_Washout",
+    "description":"Vision Modality: Low-Contrast Illumination Washout (15% scale + shift)",
+    "model_name":"SEAA Adaptive (Tabular Q)",
+    "micro_f1":0.3984,
+    "macro_f1":0.3544,
+    "micro_ece":0.051694581,
+    "brier_score":0.0749553863
+  },
+  {
+    "condition_name":"OOD_3_Low_Contrast_Washout",
+    "description":"Vision Modality: Low-Contrast Illumination Washout (15% scale + shift)",
+    "model_name":"SEAA Adaptive (LinUCB)",
+    "micro_f1":0.582,
+    "macro_f1":0.4421,
+    "micro_ece":0.0226041936,
+    "brier_score":0.0629354043
+  },
+  {
+    "condition_name":"OOD_3_Low_Contrast_Washout",
+    "description":"Vision Modality: Low-Contrast Illumination Washout (15% scale + shift)",
+    "model_name":"Oracle Upper Bound",
+    "micro_f1":0.6383,
+    "macro_f1":0.4871,
+    "micro_ece":0.0287468226,
+    "brier_score":0.0654224841
+  }
+]

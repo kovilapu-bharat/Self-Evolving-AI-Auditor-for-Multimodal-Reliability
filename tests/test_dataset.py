@@ -1,6 +1,6 @@
 """
-Comprehensive automated test suite for MM-IMDb Data Pipeline (Phase 2 Validation).
-Covers all 12 mandatory validation checks specified in Section 4.
+Comprehensive automated test suite for MM-IMDb Data Pipeline.
+Covers all 12 mandatory validation checks.
 """
 
 import os

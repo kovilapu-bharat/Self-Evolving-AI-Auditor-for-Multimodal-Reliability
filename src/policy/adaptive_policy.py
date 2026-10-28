@@ -1,5 +1,5 @@
 """
-Adaptive Recovery Policy for SEAA (Phase 5).
+Adaptive Recovery Policy for SEAA.
 Implements an outcome-learning contextual decision policy for multimodal failure recovery.
 
 Features:

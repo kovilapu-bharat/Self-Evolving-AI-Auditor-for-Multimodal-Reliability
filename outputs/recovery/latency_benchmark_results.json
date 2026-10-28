@@ -1,0 +1,110 @@
+{
+  "environment": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "python_version": "3.11.9",
+    "numpy_version": "1.26.4",
+    "timer": "time.perf_counter_ns",
+    "warmup_iterations": 50,
+    "timed_iterations": 1000,
+    "evaluation_mode": "Single-sample inference (batch_size=1)"
+  },
+  "stages": {
+    "Text Branch Inference": {
+      "mean_ms": 9.1671371,
+      "mean_us": 9167.1371,
+      "std_us": 6468.965478945887,
+      "median_us": 9632.3,
+      "p90_us": 16066.77,
+      "p95_us": 18377.17,
+      "p99_us": 28475.84999999998,
+      "min_us": 2541.9,
+      "max_us": 68103.4,
+      "throughput_samples_per_sec": 109.08531083275716
+    },
+    "Image Branch Inference (Cached)": {
+      "mean_ms": 8.014493400000001,
+      "mean_us": 8014.4934,
+      "std_us": 10431.308418608687,
+      "median_us": 8194.1,
+      "p90_us": 13991.66,
+      "p95_us": 16129.795,
+      "p99_us": 25102.431999999997,
+      "min_us": 1969.3,
+      "max_us": 271908.1,
+      "throughput_samples_per_sec": 124.77395015385501
+    },
+    "Static Late Fusion": {
+      "mean_ms": 0.019589,
+      "mean_us": 19.589,
+      "std_us": 21.13458584879297,
+      "median_us": 22.1,
+      "p90_us": 29.1,
+      "p95_us": 31.514999999999986,
+      "p99_us": 64.22799999999998,
+      "min_us": 5.5,
+      "max_us": 531.6,
+      "throughput_samples_per_sec": 51049.05814487723
+    },
+    "Auditor & Diagnosis Module": {
+      "mean_ms": 7.001832200000001,
+      "mean_us": 7001.832200000001,
+      "std_us": 5883.407092918453,
+      "median_us": 7957.8,
+      "p90_us": 12425.28,
+      "p95_us": 14744.554999999998,
+      "p99_us": 23092.541999999998,
+      "min_us": 1707.0,
+      "max_us": 99905.1,
+      "throughput_samples_per_sec": 142.81976080489332
+    },
+    "Contextual Policy Decision": {
+      "mean_ms": 0.034024500000000006,
+      "mean_us": 34.0245,
+      "std_us": 21.227521987975894,
+      "median_us": 36.5,
+      "p90_us": 48.8,
+      "p95_us": 56.25499999999995,
+      "p99_us": 106.20100000000001,
+      "min_us": 12.1,
+      "max_us": 300.1,
+      "throughput_samples_per_sec": 29390.58619524166
+    },
+    "Recovery Action Execution": {
+      "mean_ms": 0.0085411,
+      "mean_us": 8.5411,
+      "std_us": 6.330655636661972,
+      "median_us": 9.7,
+      "p90_us": 14.4,
+      "p95_us": 16.604999999999997,
+      "p99_us": 23.9,
+      "min_us": 2.3,
+      "max_us": 82.8,
+      "throughput_samples_per_sec": 117080.93805247567
+    },
+    "SEAA Total Audit & Recovery Overhead": {
+      "mean_ms": 7.0517,
+      "mean_us": 7051.700000000001,
+      "std_us": 5901.0237536346185,
+      "median_us": 8013.55,
+      "p90_us": 12492.75,
+      "p95_us": 14816.88,
+      "p99_us": 23192.877,
+      "min_us": 1733.2,
+      "max_us": 99976.3,
+      "throughput_samples_per_sec": 141.80977636598266
+    },
+    "Complete End-to-End Audited System": {
+      "mean_ms": 24.2660658,
+      "mean_us": 24266.0658,
+      "std_us": 19509.887649482003,
+      "median_us": 26301.7,
+      "p90_us": 42503.090000000004,
+      "p95_us": 49189.825,
+      "p99_us": 78381.27999999997,
+      "min_us": 6315.9,
+      "max_us": 335367.3,
+      "throughput_samples_per_sec": 41.20981160448349
+    }
+  }
+}

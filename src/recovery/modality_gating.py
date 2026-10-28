@@ -1,6 +1,6 @@
 """
-Dynamic Modality Gating and Fallback Recovery for SEAA (Phase 5 Recovery).
-Improvement #9: Implements adaptive recovery strategies that mitigate multimodal degradation
+Dynamic Modality Gating and Fallback Recovery for SEAA.
+Implements adaptive recovery strategies that mitigate multimodal degradation
 based on diagnostic labels and reliability signals from MultimodalReliabilityAuditor:
 
 Recovery Rules:

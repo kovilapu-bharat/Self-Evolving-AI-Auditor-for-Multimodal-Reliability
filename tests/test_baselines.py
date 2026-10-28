@@ -1,5 +1,5 @@
 """
-Unit tests for Baseline Models, Fusion, and Evaluation Metrics (Phase 3 Validation).
+Unit tests for Baseline Models, Fusion, and Evaluation Metrics.
 Tests:
 1. Split indices integrity (loaded without modification).
 2. Label dimensions (23) and exact order consistency across models.

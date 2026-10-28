@@ -63,6 +63,8 @@ tmp/
 temp/
 scratch/
 backups/
+*.backup*
+*.bak
 
 # Jupyter / IPython
 .ipynb_checkpoints

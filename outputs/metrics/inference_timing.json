@@ -5,59 +5,59 @@
   "timer_used": "time.perf_counter()",
   "components": {
     "text_classifier_inference": {
-      "median_sec": 1.5415,
-      "min_sec": 1.5356,
-      "max_sec": 1.715,
-      "std_sec": 0.06828,
-      "samples_per_sec": 5052.2,
+      "median_sec": 1.3948,
+      "min_sec": 1.3549,
+      "max_sec": 1.5129,
+      "std_sec": 0.06598,
+      "samples_per_sec": 5583.5,
       "all_runs_sec": [
-        1.5356,
-        1.5415,
-        1.715,
-        1.5892,
-        1.5396
+        1.501,
+        1.3753,
+        1.3549,
+        1.3948,
+        1.5129
       ]
     },
     "image_classifier_cached_inference": {
-      "median_sec": 1.9394,
-      "min_sec": 1.322,
-      "max_sec": 2.0579,
-      "std_sec": 0.29821,
-      "samples_per_sec": 4015.7,
+      "median_sec": 1.8027,
+      "min_sec": 1.7501,
+      "max_sec": 1.9843,
+      "std_sec": 0.08638,
+      "samples_per_sec": 4320.1,
       "all_runs_sec": [
-        1.9642,
-        1.4586,
-        1.322,
-        1.9394,
-        2.0579
+        1.9843,
+        1.8933,
+        1.7501,
+        1.7753,
+        1.8027
       ]
     },
     "fusion_and_thresholding_only": {
-      "median_sec": 0.000962,
-      "min_sec": 0.000942,
-      "max_sec": 0.002194,
-      "std_sec": 0.0004863,
-      "samples_per_sec": 8091428.6,
+      "median_sec": 0.00088,
+      "min_sec": 0.000732,
+      "max_sec": 0.002188,
+      "std_sec": 0.00055,
+      "samples_per_sec": 8850002.9,
       "all_runs_sec": [
-        0.002194,
-        0.001424,
-        0.000962,
-        0.000945,
-        0.000942
+        0.002188,
+        0.001395,
+        0.00088,
+        0.00078,
+        0.000732
       ]
     },
     "end_to_end_cached_multimodal_inference": {
-      "median_sec": 3.602,
-      "min_sec": 3.1565,
-      "max_sec": 3.9054,
-      "std_sec": 0.28124,
-      "samples_per_sec": 2162.2,
+      "median_sec": 3.4218,
+      "min_sec": 3.3261,
+      "max_sec": 3.6213,
+      "std_sec": 0.12129,
+      "samples_per_sec": 2276.0,
       "all_runs_sec": [
-        3.7128,
-        3.602,
-        3.9054,
-        3.2534,
-        3.1565
+        3.6213,
+        3.4218,
+        3.3261,
+        3.3377,
+        3.575
       ]
     },
     "raw_image_feature_extraction_reference": {

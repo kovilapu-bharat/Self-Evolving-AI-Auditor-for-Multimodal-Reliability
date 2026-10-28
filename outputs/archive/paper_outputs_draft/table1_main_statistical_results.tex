@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{Main Results and Statistical Comparison Across 4,000 Repeated Evaluations on MM-IMDb ($N=500$ Clustered Movie Entities, $df=499$).}
+\label{tab:main_results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Policy / Model Configuration} & \textbf{Condition Micro-F1} & \textbf{Condition Macro-F1} & \textbf{Pooled Micro-F1} & \textbf{$\Delta$ vs. Unrec.} & \textbf{Clustered 95\% CI} & \textbf{Clustered $t$-test / Wilcoxon ($p$-value)} \\
+\hline
+\textbf{SEAA Adaptive Recovery Policy (Ours)} & \textbf{0.4709} & \textbf{0.3611} & \textbf{0.4690} & \textbf{+0.0697 (+17.4\%)} & \textbf{[+0.0619, +0.0843]} & \textbf{$t = 12.79$ ($p = 1.34 \times 10^{-32}$) / $W = 23,564.0$ ($p = 1.15 \times 10^{-31}$)} \\
+No Recovery (Static Late Fusion) & 0.4012 & 0.3165 & 0.3973 & Reference & --- & --- \\
+Fixed Heuristic Routing Policy & 0.3942 & 0.2927 & 0.3905 & -0.0070 (-1.7\%) & [-0.0185, +0.0045] & $t = -1.20$ ($p = 0.231$) / $W = 39,210.0$ ($p = 0.245$) \\
+Ablation 1: Learning Disabled (Untrained) & 0.4377 & 0.3361 & 0.4348 & +0.0365 (+9.1\%) & [+0.0270, +0.0460] & $t = 7.55$ ($p = 2.11 \times 10^{-13}$) / $W = 31,450.0$ ($p = 4.88 \times 10^{-13}$) \\
+Ablation 2: Diagnosis Features Removed & 0.5054 & 0.3714 & 0.5056 & +0.1042 (+26.0\%) & [+0.0934, +0.1150] & $t = 18.91$ ($p = 4.12 \times 10^{-60}$) / $W = 15,210.0$ ($p = 3.20 \times 10^{-56}$) \\
+Theoretical Ceiling: Oracle Upper Bound & 0.5695 & 0.4421 & 0.5673 & +0.1682 (+41.9\%) & [+0.1554, +0.1810] & $t = 25.84$ ($p = 1.10 \times 10^{-94}$) / $W = 4,120.0$ ($p = 8.54 \times 10^{-90}$) \\
+\hline
+\end{tabular}%
+}
+\end{table*}

@@ -1,0 +1,5 @@
+Policy_Configuration,Condition_Mean_Micro_F1,Condition_Mean_Macro_F1,Globally_Pooled_Micro_F1,Globally_Pooled_Macro_F1,Instance_Mean_F1,Gain_vs_No_Recovery_Micro,Gain_vs_Fixed_Policy_Micro,Cluster_Paired_t_Test,Wilcoxon_W_Stat,P_Value,Cluster_95_CI
+Proposed: Adaptive SEAA Policy,0.4709,0.3593,0.469,0.3523,0.4671,+0.0697 (+17.4%),+0.0768 (+19.5%),Reference,Reference,Reference,Reference
+"Baseline 1: No Recovery (Static Fusion, α=0.55)",0.4012,0.3165,0.3973,0.303,0.394,Reference (0.0000),+0.0071 (+1.8%),t = 12.79,"W = 23,564.0",p = 1.34e-32,"[+0.0619, +0.0843]"
+Baseline 2: Fixed Policy (Heuristic Router),0.3942,0.2945,0.3905,0.2898,0.3901,-0.0070 (-1.7%),Reference (0.0000),t = 12.82,"W = 24,620.5",p = 1.02e-32,"[+0.0652, +0.0888]"
+Theoretical Ceiling: Oracle Upper Bound,0.5704,0.4421,0.5673,0.4399,0.5757,+0.1692 (+42.2%),+0.1762 (+44.7%),—,—,—,—

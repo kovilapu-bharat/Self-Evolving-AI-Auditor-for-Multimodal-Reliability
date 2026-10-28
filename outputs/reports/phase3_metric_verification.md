@@ -2,7 +2,7 @@
 
 **Project:** A Self-Evolving AI Auditing Algorithm for Adaptive Reliability Diagnosis and Recovery in Multimodal AI Systems (SEAA)
 
-**Verification Timestamp:** `2026-10-21 18:10:11`
+**Verification Timestamp:** `2026-10-26 18:56:05`
 
 ## 1. Executive Verification Status
 
@@ -59,21 +59,11 @@ All measurements executed with `time.perf_counter()` over 1 warm-up repetition f
 
 | Component | Median Latency (s) | Min (s) | Max (s) | Throughput (samples/s) | Scope Included / Measurement Status |
 |---|---|---|---|---|---|
-| **text_classifier_inference** | 1.5415s | 1.5356s | 1.7150s | **5052.2** | Measured over 7,788 test records (TF-IDF + LR predict_proba) |
-| **image_classifier_cached_inference** | 1.9394s | 1.3220s | 2.0579s | **4015.7** | Measured over 7,788 test records (StandardScaler + LR predict_proba on cached 2,048-dim features) |
-| **fusion_and_thresholding_only** | 0.000962s (0.0010s) | 0.000942s | 0.002194s | **8091428.6** | Measured over 7,788 test records (probability weighting + 23-genre thresholding only) |
-| **end_to_end_cached_multimodal_inference** | 3.6020s | 3.1565s | 3.9054s | **2162.2** | Measured over 7,788 test records (text transform + image scaling + dual classifier inference + fusion + thresholding) |
+| **text_classifier_inference** | 1.3948s | 1.3549s | 1.5129s | **5583.5** | Measured over 7,788 test records |
+| **image_classifier_cached_inference** | 1.8027s | 1.7501s | 1.9843s | **4320.1** | Measured over 7,788 test records (StandardScaler + LR predict_proba on cached 2,048-dim features) |
+| **fusion_and_thresholding_only** | 0.0009s | 0.0007s | 0.0022s | **8850002.9** | Measured over 7,788 test records (probability weighting + 23-genre thresholding only) |
+| **end_to_end_cached_multimodal_inference** | 3.4218s | 3.3261s | 3.6213s | **2276.0** | Measured over 7,788 test records (text transform + image scaling + dual classifier inference + fusion + thresholding) |
 | **raw_image_feature_extraction_reference** | 794.7000s | N/A | N/A | **9.8** | Historical estimate from the Phase 2 log; not remeasured in this audit. |
-
-> **Measurement & Scope Clarifications:**
-> 1. **Historical Estimate Status (794.7s):** The raw-image feature extraction figure of **794.7 seconds for 7,788 images** is a historical estimate derived from the Phase 2 extraction log (`outputs/logs/image_feature_extraction.log`), which logged 25,959 images processed on CPU at approximately 9.8 images/second ($7,788 / 9.8 \approx 794.7\text{ s}$). It was **not remeasured in this audit** and must not be presented as a newly measured benchmark or directly compared with cached classifier inference latencies.
-> 2. **Throughput Precision Reconciliation:** Throughput is calculated using `throughput = number_of_samples / unrounded_median_seconds` ($7,788 / \text{median}$). Displaying rounded median values (such as `0.0010s` for 4 decimal display) creates an apparent arithmetic mismatch with throughput ($7,788 / 0.0010 = 7,788,000$ vs. actual $8,091,428.6$ samples/s computed from full-precision unrounded median $0.000962\text{ s}$).
-> 3. **Timing Scope Delineation:**
->    - *Classifier inference on cached features:* Measures vectorization/scaling and scikit-learn classifier inference on precomputed 2,048-dim ResNet50 embeddings.
->    - *Fusion and thresholding alone:* Measures isolated vector arithmetic ($0.55 P_{\text{text}} + 0.45 P_{\text{image}} \ge \theta$) on precomputed probabilities. This is sub-millisecond overhead and must never be conflated with full model inference.
->    - *End-to-end cached multimodal inference:* Complete pipeline consuming raw text and cached image embeddings through vectorization, scaling, dual classifier predictions, late fusion, and per-genre thresholding.
->    - *Raw-image feature extraction:* Full poster image decoding, resizing, RGB normalization, and PyTorch ResNet50 deep CNN forward pass on CPU.
-
 
 ## 5. Late Fusion Architecture & Descriptive Findings (Task 2, Task 3 & Task 5)
 

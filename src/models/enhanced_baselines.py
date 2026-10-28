@@ -1,6 +1,6 @@
 """
-Enhanced Baseline Models and Dynamic Fusion for SEAA (Phase 5 Enhancements).
-Improvement #7: Implements enhanced unimodal and multimodal baselines:
+Enhanced Baseline Models and Dynamic Fusion for SEAA.
+Implements enhanced unimodal and multimodal baselines:
 1. EnhancedTextBaseline: Sublinear TF-IDF with bigrams, balanced regularization,
    and feature norm extraction.
 2. EnhancedImageBaseline: Deep multi-layer classification head with dropout and normalization.
