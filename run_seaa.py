@@ -91,17 +91,18 @@ def mode_audit(samples=1000, seed=42):
     ], "Inline Reliability Auditing & Failure Diagnosis")
 
 
-def mode_recovery(sample_size=500, val_train_size=500, seed=42):
-    """Runs adaptive recovery contextual bandit policy evaluation."""
+def mode_recovery(sample_size=500, val_train_size=500, seed=42, policy="all"):
+    """Runs adaptive recovery contextual bandit policy evaluation (Tabular Q, LinUCB, Thompson)."""
     logger.info("=" * 80)
-    logger.info("SEAA ADAPTIVE RECOVERY: Contextual Bandit Policy across 8 Failure Regimes")
+    logger.info(f"SEAA ADAPTIVE RECOVERY: Multi-Policy Contextual Bandit Evaluation (policy={policy})")
     logger.info("=" * 80)
     recovery_script = PROJECT_ROOT / "scripts" / "run_recovery.py"
     run_command([
         sys.executable, str(recovery_script),
         "--sample_size", str(sample_size),
         "--val_train_size", str(val_train_size),
-        "--seed", str(seed)
+        "--seed", str(seed),
+        "--policy", str(policy)
     ], "Adaptive Contextual Bandit Recovery Evaluation")
 
 
@@ -167,18 +168,28 @@ def mode_case_studies():
     run_command([sys.executable, str(case_script)], "Qualitative Case Study Telemetry Generator")
 
 
-def mode_full(sample_size=500, seed=42):
+def mode_ieee_outputs():
+    """Generates all publication-grade IEEE figures, Table 1, and reproduction log."""
+    logger.info("=" * 80)
+    logger.info("SEAA IEEE FINAL OUTPUTS: Generating Publication Figures & Table 1")
+    logger.info("=" * 80)
+    ieee_script = PROJECT_ROOT / "scripts" / "generate_ieee_final_outputs.py"
+    run_command([sys.executable, str(ieee_script)], "IEEE Final Output Generation")
+
+
+def mode_full(sample_size=500, seed=42, policy="all"):
     """Executes the complete unified SEAA pipeline end-to-end."""
     logger.info("=" * 80)
     logger.info("SEAA UNIFIED PIPELINE: Complete End-to-End Framework Execution")
     logger.info("=" * 80)
     mode_verify()
     mode_audit(samples=sample_size, seed=seed)
-    mode_recovery(sample_size=sample_size, val_train_size=sample_size, seed=seed)
+    mode_recovery(sample_size=sample_size, val_train_size=sample_size, seed=seed, policy=policy)
     mode_evaluate_diagnosis()
+    mode_ieee_outputs()
     logger.info("=" * 80)
     logger.info("SEAA COMPLETE PIPELINE COMPLETED SUCCESSFULLY")
-    logger.info("All audit, recovery, and diagnostic artifacts have been generated.")
+    logger.info("All audit, recovery, diagnostic, and IEEE publication artifacts have been generated.")
     logger.info("=" * 80)
 
 
@@ -201,15 +212,29 @@ def main():
             "sensitivity",
             "ood",
             "case-studies",
+            "ieee",
             "verify"
         ],
         help="SEAA execution mode (default: full)."
+    )
+    parser.add_argument(
+        "--policy",
+        type=str,
+        default="all",
+        choices=["tabular", "linucb", "thompson", "all"],
+        help="Contextual bandit policy algorithm for recovery (default: all)."
     )
     parser.add_argument(
         "--sample_size",
         type=int,
         default=500,
         help="Sample size for evaluation (default: 500)."
+    )
+    parser.add_argument(
+        "--val_train_size",
+        type=int,
+        default=500,
+        help="Validation sample size for bandit training (default: 500)."
     )
     parser.add_argument(
         "--seed",
@@ -227,7 +252,7 @@ def main():
     elif args.mode == "audit":
         mode_audit(samples=args.sample_size, seed=args.seed)
     elif args.mode == "recovery":
-        mode_recovery(sample_size=args.sample_size, seed=args.seed)
+        mode_recovery(sample_size=args.sample_size, val_train_size=args.val_train_size, seed=args.seed, policy=args.policy)
     elif args.mode == "ablations":
         mode_ablations()
     elif args.mode == "latency":
@@ -240,8 +265,10 @@ def main():
         mode_ood(sample_size=args.sample_size, seed=args.seed)
     elif args.mode == "case-studies":
         mode_case_studies()
+    elif args.mode == "ieee":
+        mode_ieee_outputs()
     elif args.mode == "full":
-        mode_full(sample_size=args.sample_size, seed=args.seed)
+        mode_full(sample_size=args.sample_size, seed=args.seed, policy=args.policy)
 
 
 if __name__ == "__main__":

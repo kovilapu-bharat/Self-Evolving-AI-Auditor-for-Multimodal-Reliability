@@ -11,10 +11,10 @@
     "cpu_count_logical": 12,
     "cpu_count_physical": 10,
     "ram_total_gb": 15.69,
-    "ram_available_gb": 2.56,
-    "ram_percent_used": 83.7,
+    "ram_available_gb": 2.88,
+    "ram_percent_used": 81.7,
     "disk_total_gb": 457.86,
-    "disk_free_gb": 179.82
+    "disk_free_gb": 178.9
   },
   "compute_acceleration": {
     "torch_version": "2.10.0+cpu",

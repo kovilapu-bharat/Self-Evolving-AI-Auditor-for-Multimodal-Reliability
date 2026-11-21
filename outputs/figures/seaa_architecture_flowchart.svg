@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 1130" width="920" height="1130">
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#1f2937"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#1e3a6d"/>
+    </marker>
+    <style>
+      .box { fill: #f1f4f8; stroke: #3b4c6b; stroke-width: 1.6; rx: 4; ry: 4; }
+      .box-audit { fill: #ecf2f9; stroke: #2b4c7e; stroke-width: 1.6; rx: 4; ry: 4; }
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 700; fill: #111827; text-anchor: middle; }
+      .sub { font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; fill: #1f2937; text-anchor: middle; }
+      .lbl { font-family: Arial, Helvetica, sans-serif; font-size: 13.5px; font-weight: 600; fill: #111827; }
+      .spine { fill: none; stroke: #1f2937; stroke-width: 1.6; marker-end: url(#arrow-dark); }
+      .bypass { fill: none; stroke: #1e3a6d; stroke-width: 1.6; marker-end: url(#arrow-blue); }
+      .dashed-fb { fill: none; stroke: #1e3a6d; stroke-width: 1.7; stroke-dasharray: 7 5; marker-end: url(#arrow-blue); }
+    </style>
+  </defs>
+
+  <rect width="920" height="1130" fill="#ffffff"/>
+
+  <!-- Box 1 -->
+  <rect class="box" x="220" y="40" width="460" height="86"/>
+  <text class="title" x="450" y="89">1. Multimodal Input (Text + Image)</text>
+
+  <!-- 1 -> 2 -->
+  <path class="spine" d="M 450 126 L 450 174"/>
+
+  <!-- Box 2 -->
+  <rect class="box" x="220" y="176" width="460" height="86"/>
+  <text class="title" x="450" y="225">2. Feature Extraction (TF-IDF + ResNet-50)</text>
+
+  <!-- 2 -> 3 -->
+  <path class="spine" d="M 450 262 L 450 310"/>
+
+  <!-- Box 3 -->
+  <rect class="box" x="220" y="312" width="460" height="98"/>
+  <text class="title" x="450" y="351">3. Baseline Prediction</text>
+  <text class="sub" x="450" y="378">(Text LR + Image LR + Static Fusion)</text>
+
+  <!-- 3 -> 4 -->
+  <path class="spine" d="M 450 410 L 450 458"/>
+
+  <!-- Box 4 -->
+  <rect class="box-audit" x="220" y="460" width="460" height="98"/>
+  <text class="title" x="450" y="499">4. Reliability Monitoring</text>
+  <text class="sub" x="450" y="526">(Availability, Entropy, JSD, L2 Norms)</text>
+
+  <!-- 4 -> 5 -->
+  <path class="spine" d="M 450 558 L 450 606"/>
+
+  <!-- Box 5 -->
+  <rect class="box-audit" x="220" y="608" width="460" height="98"/>
+  <text class="title" x="450" y="647">5. Failure Diagnosis</text>
+  <text class="sub" x="450" y="674">(Clean, Missing, Failure, Conflict, Uncertainty)</text>
+
+  <!-- 5 -> 6 -->
+  <path class="spine" d="M 450 706 L 450 754"/>
+
+  <!-- Box 6 -->
+  <rect class="box-audit" x="220" y="756" width="460" height="116"/>
+  <text class="title" x="450" y="794">6. Adaptive Recovery</text>
+  <text class="sub" x="450" y="821">(Unimodal, Static, Conservative,</text>
+  <text class="sub" x="450" y="843">Dynamic Fusion + Thresholding)</text>
+
+  <!-- 6 -> 7 -->
+  <path class="spine" d="M 450 872 L 450 920"/>
+
+  <!-- Box 7 -->
+  <rect class="box" x="220" y="922" width="460" height="98"/>
+  <text class="title" x="450" y="961">7. Evaluation &amp; Offline Learning</text>
+  <text class="sub" x="450" y="988">(Val: Reward, Policy Update | Test: F1 Only)</text>
+
+  <!-- Left Upper Bypass: 2 -> 4 (L2 Norms) - zero crossings -->
+  <path class="bypass" d="M 220 219 L 155 219 L 155 509 L 218 509"/>
+  <text class="lbl" x="142" y="368" text-anchor="end">L2 Norms</text>
+
+  <!-- Right Inner Bypass: 4 -> 6 (Context Signals) -->
+  <path class="bypass" d="M 680 509 L 735 509 L 735 796 L 682 796"/>
+  <text class="lbl" x="745" y="647" text-anchor="start">Context</text>
+  <text class="lbl" x="745" y="666" text-anchor="start">Signals</text>
+
+  <!-- Right Outer Bypass: 3 -> 6 (p^T, p^V) - strictly one-way into Box 6 -->
+  <path class="bypass" d="M 680 361 L 820 361 L 820 832 L 682 832"/>
+  <text class="lbl" x="830" y="590" text-anchor="start">p<tspan baseline-shift="super" font-size="10">T</tspan>, p<tspan baseline-shift="super" font-size="10">V</tspan></text>
+
+  <!-- Left Lower Dashed Feedback Loop: 7 -> 6 (Offline Validation Only) -->
+  <path class="dashed-fb" d="M 450 1020 L 450 1085 L 155 1085 L 155 814 L 218 814"/>
+  <text class="lbl" x="142" y="932" text-anchor="end">Offline Validation</text>
+  <text class="lbl" x="142" y="951" text-anchor="end">Only (Frozen at</text>
+  <text class="lbl" x="142" y="970" text-anchor="end">Test Time)</text>
+</svg>

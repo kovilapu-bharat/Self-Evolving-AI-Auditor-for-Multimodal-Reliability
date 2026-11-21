@@ -22,7 +22,7 @@
 | Subsystem / Architectural Module | Implementation | Verification & Testing | Operational Status |
 |---|---|---|:---:|
 | **1. System Foundation & Environment** | Hardware verification, memory management, dependency checks | Verified on 12-core CPU workstation | **Complete (100%)** |
-| **2. Data Pipeline & Zero-Leakage Stratification** | Grouped iterative stratification, duplicate text isolation (60/10/30) | 0 cross-split duplicates, 83/83 tests pass | **Complete (100%)** |
+| **2. Data Pipeline & Zero-Leakage Stratification** | Grouped iterative stratification, duplicate text isolation (60/10/30) | 0 cross-split duplicates, 95/95 tests pass | **Complete (100%)** |
 | **3. Core Baselines & Representation Caching** | ResNet-50 visual feature cache (212.6 MB), TF-IDF text, Late Fusion | Validated on 7,788 test movies; thresholds tuned | **Complete (100%)** |
 | **4. Inline Multimodal Reliability Auditor** | Multi-label Bernoulli JSD, predictive binary entropy, L2 feature norms | Zero test-label leakage; continuous signals | **Complete (100%)** |
 | **5. Multi-Class Failure Diagnoser** | Rule-based & learned diagnoser calibrated on validation distributions | 100% precision/recall on missing modality; F1=0.7874 | **Complete (100%)** |
@@ -34,7 +34,7 @@
 | **11. Efficiency & Latency Micro-Profiling** | $N=1,000$ high-resolution profiling runs | Policy decision: 0.0245 ms; End-to-end: 11.57 ms | **Complete (100%)** |
 | **12. Unified Command-Center Entry Point** | Extended CLI (`run_seaa.py` / `main.py`) | All 10 execution modes supported and verified | **Complete (100%)** |
 
-**Automated Test Suite Status:** **83/83 passing unit and integration tests** (`python -m unittest discover -s tests` in ~15s - OK).
+**Automated Test Suite Status:** **95/95 passing unit and integration tests** (`python -m unittest discover -s tests` in ~15s - OK).
 
 ---
 
@@ -132,7 +132,7 @@ SEAA/
 │   ├── failures/                            # Text and visual corruption operators
 │   ├── recovery/                            # Fallback actions & dynamic modality gating
 │   └── policy/                              # Adaptive contextual bandit policy
-├── tests/                                   # 73 passing automated unit tests
+├── tests/                                   # 95 passing automated unit tests across 11 modules
 └── outputs/
     ├── checkpoints/                         # Serialized model weights (joblib / json)
     ├── figures/                             # Master publication & analysis figures
@@ -159,6 +159,6 @@ python run_seaa.py --mode latency        # Run Latency & Efficiency Profiling
 python run_seaa.py --mode baselines      # Run Baseline Training & Evaluation
 python run_seaa.py --mode verify         # Run System & Environment Verification
 
-# 3. Run Automated Unit Test Suite (73 Tests):
+# 3. Run Automated Unit Test Suite (95 Tests):
 python -m unittest discover -s tests
 ```

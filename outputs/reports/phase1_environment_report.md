@@ -5,8 +5,8 @@
 - **Processor:** Intel64 Family 6 Model 154 Stepping 4, GenuineIntel
 - **Logical CPU Cores:** 12 (Physical: 10)
 - **Total RAM:** 15.69 GB
-- **Available RAM:** 2.56 GB
-- **Free Disk Space (C:):** 179.82 GB / 457.86 GB
+- **Available RAM:** 2.88 GB
+- **Free Disk Space (C:):** 178.9 GB / 457.86 GB
 
 ## 2. Compute & Acceleration Setup
 - **PyTorch Version:** 2.10.0+cpu

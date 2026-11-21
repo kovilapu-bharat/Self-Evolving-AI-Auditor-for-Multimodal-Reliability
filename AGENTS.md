@@ -233,7 +233,7 @@ SEAA/
 │   └── policy/
 │       ├── adaptive_policy.py               # AdaptiveRecoveryPolicy contextual bandit (Tabular Q)
 │       └── linear_bandit.py                 # LinUCB & Thompson Sampling on continuous contexts
-├── tests/                                   # 83 passing automated unit tests
+├── tests/                                   # 95 passing automated unit tests across 11 modules
 │   ├── test_dataset.py                      # Stratification & zero-leakage tests
 │   ├── test_baselines.py                    # Baseline model & metric tests
 │   ├── test_corruptions.py                  # Text and visual corruption tests
@@ -283,11 +283,11 @@ python run_seaa.py --mode full
 ```
 *Executes environment check, inline auditing, adaptive recovery, and diagnostic evaluation in one command.*
 
-### 6.2 Run the Automated Test Suite (83 Tests)
+### 6.2 Run the Automated Test Suite (95 Tests)
 ```bash
 python -m unittest discover -s tests
 ```
-*Expected Result:* `Ran 83 tests in ~12-16s - OK`.
+*Expected Result:* `Ran 95 tests in ~12-16s - OK`.
 
 ### 6.3 Run Adaptive Recovery Benchmark
 ```bash
@@ -340,4 +340,4 @@ When interacting with or extending this codebase, every AI agent MUST obey these
 2. **Cluster-Level Resampling for Statistical Claims:** Never treat repeated evaluations from the same movie as independent. All paired $t$-tests and bootstrap resamples must cluster by `movie_id` ($N = 500$ clusters).
 3. **Preserve Frozen Checkpoints:** Do not overwrite baseline checkpoints in `outputs/checkpoints/` (`text_baseline.joblib`, `image_baseline.joblib`, `multimodal_baseline.json`).
 4. **Physical Admissibility Constraints:** When designing or executing recovery actions, physical modality availability must be strictly respected via `ctx.get_valid_actions()`.
-5. **Continuous Verification:** Any proposed algorithmic change must maintain a 100% passing rate across all 83 unit tests in `tests/`.
+5. **Continuous Verification:** Any proposed algorithmic change must maintain a 100% passing rate across all 95 unit tests in `tests/`.

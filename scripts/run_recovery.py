@@ -69,6 +69,11 @@ from src.policy.adaptive_policy import (
     ACTION_CONSERVATIVE_FUSION,
     ALL_ACTIONS
 )
+from src.policy.linear_bandit import (
+    LinUCBPolicy,
+    ContextualThompsonSamplingPolicy,
+    extract_continuous_context_vector
+)
 
 
 def setup_logger(log_file: Path) -> logging.Logger:
@@ -121,6 +126,13 @@ def parse_args():
         default=None,
         help="Custom output run directory (defaults to outputs/recovery/run_<timestamp>)."
     )
+    parser.add_argument(
+        "--policy",
+        type=str,
+        default="all",
+        choices=["tabular", "linucb", "thompson", "all"],
+        help="Bandit policy algorithm to evaluate: 'tabular' (Q-learning), 'linucb' (Disjoint Ridge UCB), 'thompson' (Bayesian Posterior Sampling), or 'all' (compare all three side-by-side)."
+    )
     return parser.parse_args()
 
 
@@ -135,13 +147,13 @@ def train_policy_on_validation(
     thresholds: np.ndarray,
     seed: int = 42,
     logger: Optional[logging.Logger] = None
-) -> Tuple[AdaptiveRecoveryPolicy, List[Dict[str, Any]]]:
+) -> Tuple[AdaptiveRecoveryPolicy, LinUCBPolicy, ContextualThompsonSamplingPolicy, List[Dict[str, Any]]]:
     """
-    Trains the Adaptive Recovery Policy strictly on validation split data.
-    Simulates failure regimes to allow the bandit to learn state-action values.
+    Trains the Adaptive Recovery Policy (Tabular Q-learning), LinUCB, and Contextual Thompson Sampling
+    strictly on validation split data. Simulates failure regimes to allow the bandits to learn optimal recovery.
     """
     if logger:
-        logger.info(f"Training Adaptive Recovery Policy on {len(val_indices)} validation samples...")
+        logger.info(f"Training Multi-Policy Contextual Bandits on {len(val_indices)} validation samples...")
 
     policy = AdaptiveRecoveryPolicy(
         learning_rate=0.20,
@@ -149,6 +161,20 @@ def train_policy_on_validation(
         epsilon=0.15,
         ucb_c=0.5,
         default_alpha=0.55,
+        seed=seed,
+        learning_enabled=True
+    )
+    linucb = LinUCBPolicy(
+        d=9,
+        alpha=0.5,
+        ridge_lambda=1.0,
+        seed=seed,
+        learning_enabled=True
+    )
+    thompson = ContextualThompsonSamplingPolicy(
+        d=9,
+        v=0.25,
+        ridge_lambda=1.0,
         seed=seed,
         learning_enabled=True
     )
@@ -196,6 +222,8 @@ def train_policy_on_validation(
         rec_probs, _ = policy.apply_action(act, val_t_probs[i], val_i_probs[i], ctx)
         reward = policy.compute_reward(rec_probs, val_mm_probs[i], y_val[i], thresholds)
         policy.update(ctx, act, reward)
+        linucb.update(ctx, act, reward)
+        thompson.update(ctx, act, reward)
 
     # 2. Text failure episodes on validation (text truncation & token masking)
     corrupted_t_texts = corrupt_text_batch(val_texts, corruption_type="truncation", keep_ratio=0.25, base_seed=seed)
@@ -227,6 +255,8 @@ def train_policy_on_validation(
         rec_probs, _ = policy.apply_action(act, corrupted_t_probs[i], val_i_probs[i], ctx)
         reward = policy.compute_reward(rec_probs, unrec_t_fail[i], y_val[i], thresholds)
         policy.update(ctx, act, reward)
+        linucb.update(ctx, act, reward)
+        thompson.update(ctx, act, reward)
 
     # 3. Missing text episodes on validation
     empty_t_probs = np.full_like(val_t_probs, 0.05)
@@ -246,6 +276,8 @@ def train_policy_on_validation(
         rec_probs, _ = policy.apply_action(act, empty_t_probs[i], val_i_probs[i], ctx)
         reward = policy.compute_reward(rec_probs, unrec_empty_t[i], y_val[i], thresholds)
         policy.update(ctx, act, reward)
+        linucb.update(ctx, act, reward)
+        thompson.update(ctx, act, reward)
 
     # 4. Image failure episodes on validation (noise / blur feature perturbation)
     rng_val = np.random.RandomState(seed + 1)
@@ -276,6 +308,8 @@ def train_policy_on_validation(
         rec_probs, _ = policy.apply_action(act, val_t_probs[i], noisy_i_probs[i], ctx)
         reward = policy.compute_reward(rec_probs, unrec_ifail[i], y_val[i], thresholds)
         policy.update(ctx, act, reward)
+        linucb.update(ctx, act, reward)
+        thompson.update(ctx, act, reward)
 
     # 5. Missing image episodes on validation
     black_i_probs = np.full_like(val_i_probs, 0.10)
@@ -295,10 +329,14 @@ def train_policy_on_validation(
         rec_probs, _ = policy.apply_action(act, val_t_probs[i], black_i_probs[i], ctx)
         reward = policy.compute_reward(rec_probs, unrec_empty_i[i], y_val[i], thresholds)
         policy.update(ctx, act, reward)
+        linucb.update(ctx, act, reward)
+        thompson.update(ctx, act, reward)
 
-    # Freeze policy for evaluation
+    # Freeze policies for evaluation (zero test label leakage)
     policy.learning_enabled = False
     policy.epsilon = 0.0
+    linucb.learning_enabled = False
+    thompson.learning_enabled = False
 
     if logger:
         logger.info(
@@ -306,7 +344,7 @@ def train_policy_on_validation(
             f"{len(policy.q_table)} distinct context regimes."
         )
 
-    return policy, policy.update_history
+    return policy, linucb, thompson, policy.update_history
 
 
 def compute_oracle_action(
@@ -437,9 +475,9 @@ def main():
         except Exception as e:
             logger.warning(f"Could not load learned diagnostic classifier: {e}")
 
-    # 4. Train Adaptive Recovery Policy on Validation Failures
+    # 4. Train Multi-Policy Contextual Bandits on Validation Failures
     val_train_indices = val_indices[:args.val_train_size]
-    trained_policy, train_history = train_policy_on_validation(
+    trained_policy, trained_linucb, trained_thompson, train_history = train_policy_on_validation(
         val_indices=val_train_indices,
         meta_df=meta_df,
         all_cached_feats=all_cached_feats,
@@ -453,6 +491,19 @@ def main():
     )
     policy_ckpt_path = run_dir / "trained_adaptive_policy.json"
     trained_policy.save_policy(policy_ckpt_path)
+
+    linucb_ckpt_path = run_dir / "trained_linucb_policy.json"
+    trained_linucb.save(linucb_ckpt_path)
+
+    thompson_ckpt_path = run_dir / "trained_thompson_policy.json"
+    with open(thompson_ckpt_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "policy_type": "ContextualThompsonSamplingPolicy",
+            "d": trained_thompson.d,
+            "v": trained_thompson.v,
+            "counts": trained_thompson.counts,
+            "f": {a: trained_thompson.f[a].tolist() for a in trained_thompson.actions}
+        }, f, indent=2)
 
     history_path = run_dir / "policy_training_history.json"
     with open(history_path, "w", encoding="utf-8") as f:
@@ -726,6 +777,50 @@ def main():
 
         p3_latency_ms_per_sample = ((time.perf_counter() - t0_p3) / audit_n) * 1000.0
 
+        # --- G2. Evaluate Policy 3b: LinUCB Policy (Continuous Context) ---
+        p_lin_probs = np.zeros_like(t_probs)
+        p_lin_actions = []
+        t0_lin = time.perf_counter()
+        for i in range(audit_n):
+            ctx = PolicyContext(
+                has_text=bool(has_text_flags[i]),
+                has_image=bool(has_image_flags[i]),
+                text_entropy=float(t_entropies[i]),
+                image_entropy=float(i_entropies[i]),
+                bernoulli_jsd=float(jsds[i]),
+                hamming_distance=float(hammings[i]),
+                text_norm=float(cond_text_norms[i]),
+                image_norm=float(cond_image_norms[i]),
+                diagnosis=str(diagnoses[i])
+            )
+            act_lin, _ = trained_linucb.select_action(ctx, frozen=True)
+            rec_lin, _ = trained_policy.apply_action(act_lin, t_probs[i], i_probs[i], ctx)
+            p_lin_probs[i] = rec_lin
+            p_lin_actions.append(act_lin)
+        linucb_latency_ms = ((time.perf_counter() - t0_lin) / audit_n) * 1000.0
+
+        # --- G3. Evaluate Policy 3c: Contextual Thompson Sampling (Bayesian Posterior) ---
+        p_ts_probs = np.zeros_like(t_probs)
+        p_ts_actions = []
+        t0_ts = time.perf_counter()
+        for i in range(audit_n):
+            ctx = PolicyContext(
+                has_text=bool(has_text_flags[i]),
+                has_image=bool(has_image_flags[i]),
+                text_entropy=float(t_entropies[i]),
+                image_entropy=float(i_entropies[i]),
+                bernoulli_jsd=float(jsds[i]),
+                hamming_distance=float(hammings[i]),
+                text_norm=float(cond_text_norms[i]),
+                image_norm=float(cond_image_norms[i]),
+                diagnosis=str(diagnoses[i])
+            )
+            act_ts, _ = trained_thompson.select_action(ctx, frozen=True)
+            rec_ts, _ = trained_policy.apply_action(act_ts, t_probs[i], i_probs[i], ctx)
+            p_ts_probs[i] = rec_ts
+            p_ts_actions.append(act_ts)
+        ts_latency_ms = ((time.perf_counter() - t0_ts) / audit_n) * 1000.0
+
         # --- H. Evaluate Policy 4: Oracle Upper Bound ---
         p4_probs = np.zeros_like(t_probs)
         p4_actions = []
@@ -751,6 +846,8 @@ def main():
         eval_p1 = evaluate_multilabel_predictions(y_test_true, p1_probs, thresholds, GENRES)
         eval_p2 = evaluate_multilabel_predictions(y_test_true, p2_probs, thresholds, GENRES)
         eval_p3 = evaluate_multilabel_predictions(y_test_true, p3_probs, thresholds, GENRES)
+        eval_lin = evaluate_multilabel_predictions(y_test_true, p_lin_probs, thresholds, GENRES)
+        eval_ts = evaluate_multilabel_predictions(y_test_true, p_ts_probs, thresholds, GENRES)
         eval_p4 = evaluate_multilabel_predictions(y_test_true, p4_probs, thresholds, GENRES)
 
         # Delta relative to same-ID unrecovered baseline (P1)
@@ -760,12 +857,20 @@ def main():
         delta_p3_micro = eval_p3["micro_f1"] - eval_p1["micro_f1"]
         delta_p3_macro = eval_p3["macro_f1"] - eval_p1["macro_f1"]
 
+        delta_lin_micro = eval_lin["micro_f1"] - eval_p1["micro_f1"]
+        delta_lin_macro = eval_lin["macro_f1"] - eval_p1["macro_f1"]
+
+        delta_ts_micro = eval_ts["micro_f1"] - eval_p1["micro_f1"]
+        delta_ts_macro = eval_ts["macro_f1"] - eval_p1["macro_f1"]
+
         delta_p4_micro = eval_p4["micro_f1"] - eval_p1["micro_f1"]
 
-        logger.info(f"P1 (No Recovery):        Micro-F1 = {eval_p1['micro_f1']:.4f} | Macro-F1 = {eval_p1['macro_f1']:.4f}")
-        logger.info(f"P2 (Fixed Policy):       Micro-F1 = {eval_p2['micro_f1']:.4f} | Delta = {delta_p2_micro:+.4f}")
-        logger.info(f"P3 (Adaptive Policy):    Micro-F1 = {eval_p3['micro_f1']:.4f} | Delta = {delta_p3_micro:+.4f}")
-        logger.info(f"P4 (Oracle Upper Bound): Micro-F1 = {eval_p4['micro_f1']:.4f} | Delta = {delta_p4_micro:+.4f}")
+        logger.info(f"P1 (No Recovery):           Micro-F1 = {eval_p1['micro_f1']:.4f} | Macro-F1 = {eval_p1['macro_f1']:.4f}")
+        logger.info(f"P2 (Fixed Policy):          Micro-F1 = {eval_p2['micro_f1']:.4f} | Delta = {delta_p2_micro:+.4f}")
+        logger.info(f"P3 (Adaptive Tabular Q):    Micro-F1 = {eval_p3['micro_f1']:.4f} | Delta = {delta_p3_micro:+.4f}")
+        logger.info(f"P3b (LinUCB Continuous):    Micro-F1 = {eval_lin['micro_f1']:.4f} | Delta = {delta_lin_micro:+.4f}")
+        logger.info(f"P3c (Thompson Sampling):    Micro-F1 = {eval_ts['micro_f1']:.4f} | Delta = {delta_ts_micro:+.4f}")
+        logger.info(f"P4 (Oracle Upper Bound):    Micro-F1 = {eval_p4['micro_f1']:.4f} | Delta = {delta_p4_micro:+.4f}")
 
         # Action distribution count for P3
         counts = {a: p3_actions.count(a) for a in ALL_ACTIONS}
@@ -787,9 +892,17 @@ def main():
             "adaptive_policy_macro_f1": eval_p3["macro_f1"],
             "adaptive_delta_micro_f1": round(delta_p3_micro, 4),
             "adaptive_delta_macro_f1": round(delta_p3_macro, 4),
+            "linucb_policy_micro_f1": eval_lin["micro_f1"],
+            "linucb_policy_macro_f1": eval_lin["macro_f1"],
+            "linucb_delta_micro_f1": round(delta_lin_micro, 4),
+            "thompson_policy_micro_f1": eval_ts["micro_f1"],
+            "thompson_policy_macro_f1": eval_ts["macro_f1"],
+            "thompson_delta_micro_f1": round(delta_ts_micro, 4),
             "oracle_micro_f1": eval_p4["micro_f1"],
             "oracle_delta_micro_f1": round(delta_p4_micro, 4),
             "adaptive_latency_ms_per_sample": round(p3_latency_ms_per_sample, 4),
+            "linucb_latency_ms_per_sample": round(linucb_latency_ms, 4),
+            "thompson_latency_ms_per_sample": round(ts_latency_ms, 4),
             "actions_static_fusion_pct": round(counts[ACTION_STATIC_FUSION] / audit_n * 100, 1),
             "actions_text_only_pct": round(counts[ACTION_TEXT_ONLY] / audit_n * 100, 1),
             "actions_image_only_pct": round(counts[ACTION_IMAGE_ONLY] / audit_n * 100, 1),
@@ -811,6 +924,10 @@ def main():
                 "p3_adaptive_action": p3_actions[i],
                 "p3_effective_alpha": round(p3_alphas[i], 3),
                 "p3_adaptive_pred": (p3_probs[i] >= thresholds).astype(int).tolist(),
+                "p_linucb_action": p_lin_actions[i],
+                "p_linucb_pred": (p_lin_probs[i] >= thresholds).astype(int).tolist(),
+                "p_thompson_action": p_ts_actions[i],
+                "p_thompson_pred": (p_ts_probs[i] >= thresholds).astype(int).tolist(),
                 "p4_oracle_action": p4_actions[i],
                 "y_true": y_test_true[i].astype(int).tolist()
             })
@@ -849,13 +966,19 @@ def main():
             "no_recovery": round(mean_p1_micro, 4),
             "fixed_policy": round(mean_p2_micro, 4),
             "adaptive_policy": round(mean_p3_micro, 4),
+            "linucb_policy": round(float(metrics_df["linucb_policy_micro_f1"].mean()), 4),
+            "thompson_policy": round(float(metrics_df["thompson_policy_micro_f1"].mean()), 4),
             "oracle_upper_bound": round(mean_p4_micro, 4),
             "adaptive_gain_over_unrecovered": round(mean_p3_micro - mean_p1_micro, 4),
-            "adaptive_gain_over_fixed": round(mean_p3_micro - mean_p2_micro, 4)
+            "adaptive_gain_over_fixed": round(mean_p3_micro - mean_p2_micro, 4),
+            "linucb_gain_over_unrecovered": round(float(metrics_df["linucb_policy_micro_f1"].mean()) - mean_p1_micro, 4),
+            "thompson_gain_over_unrecovered": round(float(metrics_df["thompson_policy_micro_f1"].mean()) - mean_p1_micro, 4)
         },
         "clean_retention": {
             "clean_no_recovery_micro_f1": float(clean_row["no_recovery_micro_f1"]),
             "clean_adaptive_micro_f1": float(clean_row["adaptive_policy_micro_f1"]),
+            "clean_linucb_micro_f1": float(clean_row["linucb_policy_micro_f1"]),
+            "clean_thompson_micro_f1": float(clean_row["thompson_policy_micro_f1"]),
             "clean_delta": round(float(clean_row["adaptive_delta_micro_f1"]), 4),
             "clean_action_selection": {
                 "static_fusion_pct": float(clean_row["actions_static_fusion_pct"]),
@@ -868,6 +991,8 @@ def main():
         "runtime_performance": {
             "timing_method": "time.perf_counter()",
             "mean_adaptive_policy_latency_ms": round(float(metrics_df["adaptive_latency_ms_per_sample"].mean()), 4),
+            "mean_linucb_latency_ms": round(float(metrics_df["linucb_latency_ms_per_sample"].mean()), 4),
+            "mean_thompson_latency_ms": round(float(metrics_df["thompson_latency_ms_per_sample"].mean()), 4),
             "throughput_samples_per_sec": round(1000.0 / float(metrics_df["adaptive_latency_ms_per_sample"].mean()), 1)
         },
         "negative_deltas_visible": [

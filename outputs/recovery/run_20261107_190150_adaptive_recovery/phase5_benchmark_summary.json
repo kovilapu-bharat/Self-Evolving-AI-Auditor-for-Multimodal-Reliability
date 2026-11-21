@@ -1,0 +1,58 @@
+{
+  "benchmark_name": "SEAA_Phase5_Adaptive_Recovery_Evaluation",
+  "timestamp": "20261107_190150",
+  "seed": 42,
+  "sample_size_per_condition": 50,
+  "total_conditions": 8,
+  "total_evaluations_per_policy": 400,
+  "overall_mean_micro_f1": {
+    "no_recovery": 0.4192,
+    "fixed_policy": 0.425,
+    "adaptive_policy": 0.4731,
+    "linucb_policy": 0.5264,
+    "thompson_policy": 0.5264,
+    "oracle_upper_bound": 0.5832,
+    "adaptive_gain_over_unrecovered": 0.0539,
+    "adaptive_gain_over_fixed": 0.048,
+    "linucb_gain_over_unrecovered": 0.1071,
+    "thompson_gain_over_unrecovered": 0.1071
+  },
+  "clean_retention": {
+    "clean_no_recovery_micro_f1": 0.5696,
+    "clean_adaptive_micro_f1": 0.5638,
+    "clean_linucb_micro_f1": 0.5683,
+    "clean_thompson_micro_f1": 0.5683,
+    "clean_delta": -0.0058,
+    "clean_action_selection": {
+      "static_fusion_pct": 50.0,
+      "text_only_pct": 48.0,
+      "image_only_pct": 0.0,
+      "rel_weighted_pct": 2.0,
+      "conservative_pct": 0.0
+    }
+  },
+  "runtime_performance": {
+    "timing_method": "time.perf_counter()",
+    "mean_adaptive_policy_latency_ms": 0.0178,
+    "mean_linucb_latency_ms": 0.1675,
+    "mean_thompson_latency_ms": 0.1283,
+    "throughput_samples_per_sec": 56140.4
+  },
+  "negative_deltas_visible": [
+    {
+      "condition": "Clean_Baseline",
+      "policy": "Adaptive_Policy",
+      "delta": -0.0058
+    },
+    {
+      "condition": "Text_Truncation_25%",
+      "policy": "Adaptive_Policy",
+      "delta": -0.0004
+    },
+    {
+      "condition": "Text_Token_Masking_35%",
+      "policy": "Adaptive_Policy",
+      "delta": -0.0581
+    }
+  ]
+}
